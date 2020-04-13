@@ -1,0 +1,100 @@
+[debug] [2020-04-12T21:20:13.441Z] ----------------------------------------------------------------------
+[debug] [2020-04-12T21:20:13.443Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2020-04-12T21:20:13.443Z] CLI Version:   6.12.0
+[debug] [2020-04-12T21:20:13.443Z] Platform:      darwin
+[debug] [2020-04-12T21:20:13.443Z] Node Version:  v12.9.1
+[debug] [2020-04-12T21:20:13.444Z] Time:          Sun Apr 12 2020 17:20:13 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-04-12T21:20:13.444Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2020-04-12T21:20:13.456Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-12T21:20:13.456Z] > authorizing via signed-in user
+[debug] [2020-04-12T21:20:13.456Z] [iam] checking project bootstrap-firebase-b20fb for permissions ["firebase.projects.get"]
+[debug] [2020-04-12T21:20:13.458Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/bootstrap-firebase-b20fb:testIamPermissions  
+
+[debug] [2020-04-12T21:20:13.936Z] <<< HTTP RESPONSE 200
+[debug] [2020-04-12T21:20:13.938Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/bootstrap-firebase-b20fb  
+ 
+[debug] [2020-04-12T21:20:14.299Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/emmettsteven/Documents/School/CSC431/CSC431---Dashboard/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages'...
+[info] 
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2020-04-12T21:20:14.311Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/12819714252/clients/_:getWebAppConfig  
+ 
+[debug] [2020-04-12T21:20:14.312Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/12819714252:getServerAppConfig  
+ 
+[debug] [2020-04-12T21:20:14.806Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5001
+[debug] [2020-04-12T21:20:14.989Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "/Users/emmettsteven/Documents/School/CSC431/CSC431---Dashboard/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/functions" for Cloud Functions...
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5005
+[debug] [2020-04-12T21:20:15.244Z] Functions runtime initialized.
+[debug] [2020-04-12T21:20:15.244Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  Error: Cannot find module 'package.json'
+Require stack:
+- /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:772:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:677:27)
+    at Module.require (internal/modules/cjs/loader.js:830:19)
+    at require (internal/modules/cjs/helpers.js:68:18)
+    at verifyDeveloperNodeModules (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:120:32)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:445:26
+    at Generator.next (<anonymous>)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2020-04-12T22:40:49.723Z] ----------------------------------------------------------------------
+[debug] [2020-04-12T22:40:49.726Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2020-04-12T22:40:49.727Z] CLI Version:   6.12.0
+[debug] [2020-04-12T22:40:49.727Z] Platform:      darwin
+[debug] [2020-04-12T22:40:49.727Z] Node Version:  v12.9.1
+[debug] [2020-04-12T22:40:49.728Z] Time:          Sun Apr 12 2020 18:40:49 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-04-12T22:40:49.729Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2020-04-12T22:40:49.740Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-12T22:40:49.740Z] > authorizing via signed-in user
+[debug] [2020-04-12T22:40:49.740Z] [iam] checking project bootstrap-firebase-b20fb for permissions ["firebase.projects.get"]
+[debug] [2020-04-12T22:40:49.741Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-04-12T22:40:49.742Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-04-12T22:40:49.932Z] <<< HTTP RESPONSE 200
+[debug] [2020-04-12T22:40:49.952Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/bootstrap-firebase-b20fb:testIamPermissions  
+
+[debug] [2020-04-12T22:40:50.188Z] <<< HTTP RESPONSE 200
+[debug] [2020-04-12T22:40:50.191Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/bootstrap-firebase-b20fb  
+ 
+[debug] [2020-04-12T22:40:50.505Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/emmettsteven/Documents/School/CSC431/CSC431---Dashboard/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages'...
+[info] 
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[debug] [2020-04-12T22:40:50.520Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/12819714252/clients/_:getWebAppConfig  
+ 
+[debug] [2020-04-12T22:40:50.521Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/12819714252:getServerAppConfig  
+ 
+[debug] [2020-04-12T22:40:50.745Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5001
+[debug] [2020-04-12T22:40:50.915Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "/Users/emmettsteven/Documents/School/CSC431/CSC431---Dashboard/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/functions" for Cloud Functions...
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5005
+[debug] [2020-04-12T22:40:51.182Z] Functions runtime initialized.
+[debug] [2020-04-12T22:40:51.183Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] ⚠  Error: Cannot find module 'package.json'
+Require stack:
+- /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:772:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:677:27)
+    at Module.require (internal/modules/cjs/loader.js:830:19)
+    at require (internal/modules/cjs/helpers.js:68:18)
+    at verifyDeveloperNodeModules (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:120:32)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:445:26
+    at Generator.next (<anonymous>)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:7:71
+    at new Promise (<anonymous>)
+    at __awaiter (/usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:3:12)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
