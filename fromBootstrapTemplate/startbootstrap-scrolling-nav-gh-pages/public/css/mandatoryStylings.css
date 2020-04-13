@@ -1,0 +1,13 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap-reboot.css";
+@import "../node_modules/normalize.css/normalize.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../css/scrolling-nav.css";
+@import "../themeBootstrap/assets/css/bamburgh.min.css";
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+/*# sourceMappingURL=mandatoryStylings.css.map */
