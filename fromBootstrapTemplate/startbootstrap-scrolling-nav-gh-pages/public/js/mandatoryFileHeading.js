@@ -41,9 +41,11 @@ $(document).ready(function(){
     // addTag("html", "script", ["src"], ["/__/firebase/7.13.2/firebase-analytics.js"])
     // addTag("html", "script", ["src"], ["/__/firebase/init.js"])
 
-
-    $("body").append(
-        `<nav class="navbar navbar-expand-lg navbar-light bg-neutral-dark rounded p-3">
+    console.log(location.pathname.indexOf("login.html"));
+    // if(window.path.lastIndexOf())
+    if(location.pathname.indexOf("login.html") == -1) {
+        $("body").prepend(
+            `<nav class="navbar navbar-expand-lg navbar-light bg-neutral-dark rounded p-3">
             <div class="container">
                 <a href="index.html" class="navbar-brand align-middle text-center d-40 p-0" style="width: 88px!important;" href="#">
                     <img src="img/navBarLogo.png" class="h-100">
@@ -68,9 +70,10 @@ $(document).ready(function(){
                 </div>
             </div>
         </nav>`
-    );
+        );
+    }
 
-
+    
 
 });
 
