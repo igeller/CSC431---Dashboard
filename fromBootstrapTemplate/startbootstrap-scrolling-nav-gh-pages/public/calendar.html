@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+
+    <!--change to our icon-->
+    <!--    <link rel="shortcut icon" href="./favicon/favicon.ico">-->
+    <!--    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">-->
+    <!--    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">-->
+
+<!--      bootstrap css-->
+        <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css ">
+<!--    scroll css-->
+        <link rel="stylesheet" type="text/css" href="css/scrolling-nav.css">
+<!--        new boot strap template-->
+        <link rel="stylesheet" type="text/css" href="themeBootstrap/assets/css/bamburgh.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index-custom.css">
+
+    <!--    Custom CSS-->
+    <link rel="stylesheet" type="text/css"  href="css/index-custom.css">
+
+    <!-- Generic Bootstrap Core UI Kit Javascript Core -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!--Perfect scrollbar-->
+    <script type="text/javascript" src="themeBootstrap/assets/vendor/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+
+    <!--StickyKit-->
+    <script type="text/javascript" src="themeBootstrap/assets/vendor/stickykit/js/stickykit.min.js"></script>
+
+    <!--Apexcharts-->
+<!--    <script type="text/javascript" themeBootstrap="assets/vendor/apexcharts/js/apexcharts.min.js"></script>-->
+<!--    <script type="text/javascript" themeBootstrap="assets/js/demo/apexcharts/light-charts.min.js"></script>-->
+<!--    <script type="text/javascript" themeBootstrap="assets/js/demo/apexcharts/dark-charts.min.js"></script>-->
+
+
+
+</head>
+<body id="app-top" style="box-sizing: border-box!important;">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-neutral-dark rounded p-3">
+    <div class="container">
+        <a class="navbar-brand align-middle text-center d-40 p-0" style="width: 88px!important;" href="#">
+            <img src="img/navBarLogo.png" class="h-100">
+        </a>
+        <button class="navbar-toggler is-active collapsed hamburger hamburger--elastic border-0" type="button"
+                data-toggle="collapse" data-target="#nav-primary" aria-controls="nav-primary"
+                aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-primary">
+            <ul class="navbar-nav w-100 mt-3">
+                <li class="nav-item">
+                    <a class="nav-link py-0" href="#">Tasks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-0" href="#">Calendar</a>
+                </li>
+                <li id='settings' class="nav-item ml-auto">
+                    <a class="nav-link py-0" href="settings.html"> <i class="fas fa-cog"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+	<div class="d-flex justify-content-center align-items-center">
+		<div class="pull-right">
+			<button type="button" class="btn btn-primary"><</button>
+		</div>
+				<div class="pull-center">
+			<div class="dropdown">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Month
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="#">January</a>
+				<a class="dropdown-item" href="#">February</a>
+				<a class="dropdown-item" href="#">March</a>
+				<a class="dropdown-item" href="#">April</a>
+				<a class="dropdown-item" href="#">May</a>
+				<a class="dropdown-item" href="#">June</a>
+				<a class="dropdown-item" href="#">July</a>
+				<a class="dropdown-item" href="#">August</a>
+				<a class="dropdown-item" href="#">September</a>
+				<a class="dropdown-item" href="#">October</a>
+				<a class="dropdown-item" href="#">November</a>
+				<a class="dropdown-item" href="#">December</a>
+			  </div>
+			</div>
+		</div>
+		<div class="pull-center">
+			<div class="dropdown">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Year
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="#">2021</a>
+				<a class="dropdown-item" href="#">2020</a>
+				<a class="dropdown-item" href="#">2019</a>
+			  </div>
+			</div>
+		</div>
+		<div class="pull-left">
+			<button type="button" class="btn btn-primary">></button>
+		</div>
+	</div>
+</div>
+
+<div class="border-top"></div>
+
+<div class="container-fluid">
+	<div class="row" style="height: 22px;">
+		<div class="col" style="padding-left: 0px; padding-right: 0px;">
+			<div class="bg-light">
+			<p style="text-align:center">Sunday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px;">
+			<div class="bg-light">
+			<p style="text-align:center">Monday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px;">
+			<div class="bg-light">
+			<p style="text-align:center">Tuesday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px;">
+			<div class="bg-light">
+			<p style="text-align:center">Wednesday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px;">
+			<div class="bg-light">
+			<p style="text-align:center">Thursday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px;">
+			<div class="bg-light">
+			<p style="text-align:center">Friday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px;">
+			<div class="bg-light">
+			<p style="text-align:center">Saturday</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="border-bottom-0 border primary col">
+			1
+		</div>
+		<div class="border-bottom-0 border primary col">
+			2
+		</div>
+		<div class="border-bottom-0 border primary col">
+			3
+		</div>
+		<div class="border-bottom-0 border primary col">
+			4
+		</div>
+		<div class="border-bottom-0 border primary col">
+			5
+		</div>
+		<div class="border-bottom-0 border primary col">
+			6
+		</div>
+		<div class="border-bottom-0 border primary col">
+			7
+		</div>
+	</div>
+	<div class="row" style="height: 135px;">
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+	</div>
+	<div class="row">
+		<div class="border-bottom-0 border primary col">
+			8
+		</div>
+		<div class="border-bottom-0 border primary col">
+			9
+		</div>
+		<div class="border-bottom-0 border primary col">
+			10
+		</div>
+		<div class="border-bottom-0 border primary col">
+			11
+		</div>
+		<div class="border-bottom-0 border primary col">
+			12
+		</div>
+		<div class="border-bottom-0 border primary col">
+			13
+		</div>
+		<div class="border-bottom-0 border primary col">
+			14
+		</div>
+	</div>
+	<div class="row" style="height: 135px;">
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+	</div>
+	<div class="row">
+		<div class="border-bottom-0 border primary col">
+			15
+		</div>
+		<div class="border-bottom-0 border primary col">
+			16
+		</div>
+		<div class="border-bottom-0 border primary col">
+			17
+		</div>
+		<div class="border-bottom-0 border primary col">
+			18
+		</div>
+		<div class="border-bottom-0 border primary col">
+			19
+		</div>
+		<div class="border-bottom-0 border primary col">
+			20
+		</div>
+		<div class="border-bottom-0 border primary col">
+			21
+		</div>
+	</div>
+	<div class="row" style="height: 135px;">
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+	</div>
+	<div class="row">
+		<div class="border-bottom-0 border primary col">
+			22
+		</div>
+		<div class="border-bottom-0 border primary col">
+			23
+		</div>
+		<div class="border-bottom-0 border primary col">
+			24
+		</div>
+		<div class="border-bottom-0 border primary col">
+			25
+		</div>
+		<div class="border-bottom-0 border primary col">
+			26
+		</div>
+		<div class="border-bottom-0 border primary col">
+			27
+		</div>
+		<div class="border-bottom-0 border primary col">
+			28
+		</div>
+	</div>
+	<div class="row" style="height: 135px;">
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+	</div>
+	<div class="row">
+		<div class="border-bottom-0 border primary col">
+			29
+		</div>
+		<div class="border-bottom-0 border primary col">
+			30
+		</div>
+		<div class="border-bottom-0 border primary col">
+			31
+		</div>
+		<div class="border-bottom-0 border primary col">
+			1
+		</div>
+		<div class="border-bottom-0 border primary col">
+			2
+		</div>
+		<div class="border-bottom-0 border primary col">
+			3
+		</div>
+		<div class="border-bottom-0 border primary col">
+			4
+		</div>
+	</div>
+	<div class="row" style="height: 135px;">
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+		<div class="border-top-0 border primary col">
+			Task
+		</div>
+	</div>
+</div>	
+
+</body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.13.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.13.2/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+</html>
