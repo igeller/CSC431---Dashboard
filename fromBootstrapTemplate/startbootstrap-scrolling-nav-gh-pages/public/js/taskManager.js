@@ -5,7 +5,7 @@ function createTask(title, due, description, onCompletion) {
     due: due,
     description: description
   }).then(() => {
-    onCompletion(tasksRef);
+    onCompletion();
   });
 }
 

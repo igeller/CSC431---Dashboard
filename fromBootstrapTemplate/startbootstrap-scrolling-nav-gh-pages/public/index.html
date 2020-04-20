@@ -27,12 +27,13 @@
 <script type="text/javascript" src="js/auth.js"></script>
 <script type="text/javascript" src="js/taskManager.js"></script>
 <script type="text/javascript">
-  signIn("esteven1234@gmail.com", "123456", () => {
+  signUp("test2@gmail.com", "123456", () => {
     console.log('login success');
     now = new Date()
-    createTask("Art Assignment", now.toISOString(), "Landscape sketching assignment", (ref) => {
-      console.log('task created at ' + ref);
-      getTasks();
+    createTask("Art Assignment", now.toISOString(), "Landscape sketching assignment", () => {
+      getTasks((taskArray) => {
+        console.log(taskArray);
+      });
     })
   }, (error) => {
     console.log(error);
