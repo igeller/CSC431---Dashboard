@@ -18,3 +18,18 @@ function removeTask(taskId, onCompletion, onError) {
     onError(error);
   })
 }
+
+function getTasks(onCompletion) {
+  firebase.database().ref("users/" + currentUid + "/tasks").once("value")
+  .then((snap) => {
+    taskArray = []
+    snap.forEach((childSnap) => {
+      taskData = childSnap.val();
+      taskData.due = Date.parse(taskData.due)
+      taskData.uid = childSnap.key;
+      taskArray.push(taskData);
+    })
+
+    onCompletion(taskArray);
+  })
+}
