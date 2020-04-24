@@ -100,10 +100,10 @@ $(document).ready(function(){
 
 
 
-    // //Firebase Stuff
-    // addTag("html", "script", ["src"], ["/__/firebase/7.13.2/firebase-app.js"])
-    // addTag("html", "script", ["src"], ["/__/firebase/7.13.2/firebase-analytics.js"])
-    // addTag("html", "script", ["src"], ["/__/firebase/init.js"])
+    //Firebase Stuff
+    addTag("html", "script", ["src"], ["/__/firebase/7.13.2/firebase-app.js"])
+    addTag("html", "script", ["src"], ["/__/firebase/7.13.2/firebase-analytics.js"])
+    addTag("html", "script", ["src"], ["/__/firebase/init.js"])
 
 });
 
