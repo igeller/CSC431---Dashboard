@@ -22,7 +22,7 @@
                     <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                 </div>
                 <div class="form-group col-md-6">
-                    <button class="btn btn-sm bg-neutral-primary" type="button">Confirm</button>
+                    <button id="confirmEmail" class="btn btn-sm bg-neutral-primary" type="button">Confirm</button>
                 </div>
             </div>
             <div class="form-row">
@@ -35,7 +35,7 @@
                     <input type="password" class="form-control" id="inputPassword46" placeholder="Password">
                 </div>
                 <div class="form-group col-md-5">
-                    <button class="btn btn-sm bg-neutral-primary" type="button">Confirm</button>
+                    <button id="confirmPassword" class="btn btn-sm bg-neutral-primary" type="button">Confirm</button>
                 </div>
             </div>
         </form>
@@ -90,6 +90,19 @@
 
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
+    
+<script type="text/javascript" src="js/auth.js"></script>
+<script type="text/javascript">
+    document.getElementById("confirmPassword").onclick = function fun() {
+        var newPassword = document.getElementById("inputPassword46").value;
+        updateUserPassword(newPassword, () => {
+            console.log('updated password successfully');
+        }, (error) => {
+            console.log(error);
+        })
+        window.location.reload();
+    }
+</script>
 
 </html>
 

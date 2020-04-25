@@ -25,3 +25,14 @@ function signIn(email, password, onCompletion, onError) {
     onError(error);
   })
 }
+
+function updateUserPassword(newPassword, onCompletion, onError) {
+    var user = firebase.auth().currentUser;
+    user.updatePassword(newPassword).then(function() {
+        //Password updated successfully
+        onCompletion();
+    })
+    .catch(function(error) {
+        onError(error);
+    })
+}
