@@ -6,8 +6,11 @@ function getUidFromEmail(email) {
 
 function signUp(email, password, onCompletion, onError) {
   firebase.auth().createUserWithEmailAndPassword(email, password)
+
   .then(() => {
-    currentUid = getUidFromEmail(email);
+    var currentUid = getUidFromEmail(email);
+    console.log(email);
+    console.log(password);
     onCompletion();
   })
   .catch(function(error) {
@@ -18,7 +21,7 @@ function signUp(email, password, onCompletion, onError) {
 function signIn(email, password, onCompletion, onError) {
   firebase.auth().signInWithEmailAndPassword(email, password)
   .then(() => {
-    currentUid = getUidFromEmail(email);
+    var currentUid = getUidFromEmail(email);
     onCompletion();
   })
   .catch(function(error) {

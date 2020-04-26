@@ -1,6 +1,4 @@
 $(document).ready(function(){
-
-
     function addTag(parentTag, tagName, attr, val){
         const parent = document.getElementsByTagName(parentTag);
         var tag = document.createElement(tagName);
@@ -26,9 +24,30 @@ $(document).ready(function(){
     addTag("head", "meta",["name", "content"], ["viewport", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"])
 
     addTag("head", 'link', ["rel", "type", "href"], ["stylesheet", "text/css", "./css/mandatoryStylings.css"])
+    addTag("head", 'link', ["rel", "type", "href"], ["stylesheet", "text/css", "./css/index-custom.css"])
 
+    //cookies
+    // addTag("head", "script", ["src"], "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js" )
+
+    //bootstrap
     addTag("head", "script", ["src", "integrity", "crossorigin"], ["https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js", "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\n", "anonymous"]);
     addTag("head", "script", ["src", "integrity", "crossorigin"],["https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js", "sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6", "anonymous"]);
+
+    //Firebase Stuff
+    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase.js"]);
+    addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-app.js"]);
+
+
+    addTag("head", "script", ["src"], ["/__/firebase/init.js"])
+    addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-analytics.js"]);
+    addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-auth.js"]);
+    addTag("head", "script", ["src"], ["//__/firebase/7.14.2/firebase-firestore.js"]);
+
+    addTag("head", "script", ["src"], ["/__/firebase/init.js"]);
+
+
+    addTag("head", "script", ["src"], ["/js/auth.js"]);
+    addTag("head", "script", ["src"], ["/js/commonJSFunctions.js"]);
 
     addTag("head", "link", ["src"],["themeBootstrap/assets/vendor/perfect-scrollbar/js/perfect-scrollbar.min.js"]);
     addTag("head", "link", ["src"],["themeBootstrap/assets/vendor/stickykit/js/stickykit.min.js"]);
@@ -70,7 +89,7 @@ $(document).ready(function(){
         //show which tab is active
         var tabs = ["index.html", "calendar.html", "settings.html"];
         for (const tabsKey in tabs) {
-            if(location.pathname.indexOf(tabs[tabsKey]) != -1){
+            if (location.pathname.indexOf(tabs[tabsKey]) != -1) {
                 getCurrent(tabsKey);
                 break;
             }
@@ -78,18 +97,21 @@ $(document).ready(function(){
 
         function getCurrent(tab) {
             switch (tab) {
-                case "0": activeTab("1", ["2","3"]);
-                        break;
-                case "1": activeTab("2", ["1","3"]);
-                        break;
-                case "2": activeTab("3", ["1","2"]);
-                        break;
+                case "0":
+                    activeTab("1", ["2", "3"]);
+                    break;
+                case "1":
+                    activeTab("2", ["1", "3"]);
+                    break;
+                case "2":
+                    activeTab("3", ["1", "2"]);
+                    break;
                 default:
                     break;
             }
         }
 
-        function activeTab(active, inactive){
+        function activeTab(active, inactive) {
             console.log(inactive)
             document.getElementById(active).classList.add("text-info");
             for (let inactiveKey in inactive) {
@@ -97,14 +119,6 @@ $(document).ready(function(){
             }
         }
     }
-
-
-
-    // //Firebase Stuff
-    // addTag("html", "script", ["src"], ["/__/firebase/7.13.2/firebase-app.js"])
-    // addTag("html", "script", ["src"], ["/__/firebase/7.13.2/firebase-analytics.js"])
-    // addTag("html", "script", ["src"], ["/__/firebase/init.js"])
-
 });
 
 
