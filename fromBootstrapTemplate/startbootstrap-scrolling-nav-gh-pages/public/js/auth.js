@@ -16,14 +16,15 @@ function signUp(email, password, onCompletion, onError) {
 }
 
 function signIn(email, password, onCompletion, onError) {
-  console.log(email);
-  console.log(password);
+  console.log(email, password)
   firebase.auth().signInWithEmailAndPassword(email, password)
   .then(() => {
+    console.log("login success")
     var currentUid = getUidFromEmail(email);
     onCompletion();
   })
   .catch(function(error) {
+    console.log(error)
     onError(error);
   })
 }

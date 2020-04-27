@@ -1,9 +1,9 @@
 var mystorage = window.sessionStorage;
 function getValue(id) {
-    console.log(id);
+    // console.log(id);
     var x = document.getElementById(id);
     if(x != null){
-        console.log(x.value);
+        // console.log(x.value);
         return x.value;
     }
     return "";

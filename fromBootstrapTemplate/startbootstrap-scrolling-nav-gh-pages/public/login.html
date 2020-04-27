@@ -5,9 +5,11 @@
     <script src="js/mandatoryFileHeading.js"></script>
 </head>
 <body>
-
+    <script src="/__/firebase/7.14.2/firebase-app.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-auth.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
 </div>
-
 
 <div class="row h-100">
     <div class=" card col-lg-4 mx-auto my-auto">
@@ -66,7 +68,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" onsubmit="signIn( getValue('emailToLogin'), getValue('passwordToLogin'), redirectPage('index.html'), errorAlert('loginError'))" class="btn btn-info mx-auto w-asuto">Login</button>
+                    <button type="button" onclick="signIn(getValue('emailToLogin'), getValue('passwordToLogin'), () => {redirectPage('index.html')}, () => {errorAlert('loginError')})" class="btn btn-info mx-auto w-asuto">Login</button>
 
                     <!--Sign Up-->
                     <a href="#" class="d-block mt-4 alert-link text-info" data-toggle="modal" data-target="#modal-b2">Need an account?</a>

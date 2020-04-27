@@ -35,18 +35,11 @@ $(document).ready(function(){
 
     //Firebase Stuff
     // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase.js"]);
-    addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-app.js"]);
-
-
-    // addTag("head", "script", ["src"], ["/__/firebase/init.js"])
-    addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-analytics.js"]);
-    addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-auth.js"]);
-    addTag("head", "script", ["src"], ["//__/firebase/7.14.2/firebase-firestore.js"]);
-    addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-database.js"])
-
-
-
-    addTag("head", "script", ["src"], ["/__/firebase/init.js"]);
+    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-app.js"]);
+    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-auth.js"]);
+    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-database.js"])
+    //
+    // addTag("head", "script", ["src"], ["/__/firebase/init.js"]);
 
 
     addTag("head", "script", ["src"], ["/js/auth.js"]);
@@ -123,10 +116,3 @@ $(document).ready(function(){
         }
     }
 });
-
-
-
-
-
-
-
