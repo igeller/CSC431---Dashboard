@@ -28,3 +28,13 @@ function signIn(email, password, onCompletion, onError) {
     onError(error);
   })
 }
+
+function forgotPassword(email, onCompletion = () => {}, onError = () => {}) {
+  firebase.auth().sendPasswordResetEmail(email)
+  .then(() => {
+    onCompletion();
+  })
+  .catch(() => {
+    onError();
+  })
+}

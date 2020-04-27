@@ -5,7 +5,7 @@ function createTask(title, due, description, onCompletion) {
     due: due,
     description: description
   }).then(() => {
-    onCompletion(tasksRef);
+    onCompletion();
   });
 }
 
@@ -16,5 +16,20 @@ function removeTask(taskId, onCompletion, onError) {
   })
   .catch((error) => {
     onError(error);
+  })
+}
+
+function getTasks(onCompletion) {
+  firebase.database().ref("users/" + currentUid + "/tasks").once("value")
+  .then((snap) => {
+    taskArray = []
+    snap.forEach((childSnap) => {
+      taskData = childSnap.val();
+      taskData.due = Date.parse(taskData.due)
+      taskData.uid = childSnap.key;
+      taskArray.push(taskData);
+    })
+
+    onCompletion(taskArray);
   })
 }
