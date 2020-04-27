@@ -25,13 +25,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text "><i class="fas fa-envelope"></i></span>
                     </div>
-                    <input id="emailToLogin" class="form-control requiredField" placeholder="Email" type="email" required>
+                    <input id="loginEmail" class="form-control requiredField" placeholder="Email" type="email" required>
                 </div>
                 <div class="input-group input-group-lg input-group-seamless mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user-lock"></i></span>
                     </div>
-                    <input id="passwordToLogin" class="form-control requiredField" placeholder="Password" type="password" required>
+                    <input id="loginPassword" class="form-control requiredField" placeholder="Password" type="password" required>
                 </div>
 
 
@@ -51,9 +51,9 @@
                                         <div class="card-body px-lg-5 text-left">
                                             <form role="form">
                                                 <div class="form-group row">
-                                                    <label for="customerEmailPW" class="col-sm-12 col-form-label"><i class="fas fa-user pr-2"></i>Name</label>
+                                                    <label for="forgotPassword" class="col-sm-12 col-form-label"><i class="fas fa-user pr-2"></i>Name</label>
                                                     <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="customerEmailPW" placeholder="Name" >
+                                                        <input type="text" class="form-control" id="forgotPassword" placeholder="Name" >
                                                     </div>
                                                 </div>
 
@@ -68,10 +68,10 @@
                         </div>
                     </div>
 
-                    <button type="button" onclick="signIn(getValue('emailToLogin'), getValue('passwordToLogin'), () => {redirectPage('index.html')}, () => {errorAlert('loginError')})" class="btn btn-info mx-auto w-asuto">Login</button>
+                    <button type="submit" onclick="signIn(getValue('loginEmail'), getValue('loginPassword'), () => {redirectPage('index.html')}, () => {errorAlert('loginError')})" class="btn btn-info mx-auto w-asuto">Login</button>
 
                     <!--Sign Up-->
-                    <a href="#" class="d-block mt-4 alert-link text-info" data-toggle="modal" data-target="#modal-b2">Need an account?</a>
+                    <a href="#" onclick="getValue('newUserEmail')" class="d-block mt-4 alert-link text-info" data-toggle="modal" data-target="#modal-b2">Need an account?</a>
                     <div class="modal fade" id="modal-b2" tabindex="-1" role="dialog" aria-labelledby="modal-b2" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered mx-auto col-lg-4" role="document">
                             <div class="modal-content">
@@ -93,20 +93,23 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="customerEmail" class="col-sm-12 col-form-label"><i class="fas fa-envelope pr-2"></i>Email</label>
+                                                    <label for="newUserEmail" class="col-sm-12 col-form-label"><i class="fas fa-envelope pr-2"></i>Email</label>
                                                     <div class="col-sm-12">
-                                                        <input type="email" class="input-required form-control" id="customerEmail" placeholder="Email" required>
+                                                        <input type="email" class="input-required form-control" id="newUserEmail" placeholder="Email" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="customerPassword" class="col-sm-12 col-form-label"><i class="fas fa-user-lock pr-2"></i>Password</label>
+                                                    <label for="newUserPassword" class="col-sm-12 col-form-label"><i class="fas fa-user-lock pr-2"></i>Password</label>
                                                     <div class="col-sm-12">
-                                                        <input type="password" class="form-control requiredfield" id="customerPassword" placeholder="Password" required>
+                                                        <input type="password" class="form-control requiredfield" id="newUserPassword" placeholder="Password" required>
                                                     </div>
                                                 </div>
 
                                                 <div  class="text-center">
-                                                    <button id="createAccBtn" type="submit" class="btn btn-info my-4" onsubmit="signUp(getValue('customerName'), getValue('customerEmail'), getValue('customerPassword'), redirectPage('login.html'), errorAlert('registrationError'))">Create Account</button>
+                                                    <button type="submit" onclick="signUp(getValue('newUserEmail'), getValue('newUserPassword'), () => {redirectPage('login.html')}, () => {errorAlert('registrationError')})" class="btn btn-info mx-auto w-asuto">Create Account</button>
+<!--                                                    <script>getValue("newUserEmail")</script>-->
+
+                                                    <!--                                                    <button id="createAccBtn" type="submit" class="btn btn-info my-4" onsubmit="signUp(getValue('customerName'), getValue('newUserEmail'), getValue('customerPassword'), redirectPage('login.html'), errorAlert('registrationError'))">Create Account</button>-->
                                                 </div>
                                             </form>
                                         </div>
