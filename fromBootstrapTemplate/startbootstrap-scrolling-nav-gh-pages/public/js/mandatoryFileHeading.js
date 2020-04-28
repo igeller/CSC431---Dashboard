@@ -36,15 +36,6 @@ $(document).ready(function(){
     addTag("head", "script", ["src", "integrity", "crossorigin"], ["https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js", "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\n", "anonymous"]);
     addTag("head", "script", ["src", "integrity", "crossorigin"],["https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js", "sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6", "anonymous"]);
 
-    //Firebase Stuff
-    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase.js"]);
-    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-app.js"]);
-    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-auth.js"]);
-    // addTag("head", "script", ["src"], ["/__/firebase/7.14.2/firebase-database.js"])
-    //
-    // addTag("head", "script", ["src"], ["/__/firebase/init.js"]);
-
-
     addTag("head", "script", ["src"], ["/js/auth.js"]);
     addTag("head", "script", ["src"], ["/js/commonJSFunctions.js"]);
 
@@ -64,7 +55,7 @@ $(document).ready(function(){
         addTag("head", "script", ["src"], ["/js/confirmLoggedIn.js"]);
 
         $("body").prepend(
-            `<script src="mandatoryFileHeading.js"></script>
+            `
             <nav class="navbar navbar-expand-lg navbar-light bg-neutral-dark rounded p-3">
             <div class="container">
                 <a href="index.html" class="navbar-brand align-middle text-center d-40 p-0" style="width: 88px!important;" href="#">

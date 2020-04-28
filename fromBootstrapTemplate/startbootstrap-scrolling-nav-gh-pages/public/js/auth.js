@@ -87,7 +87,7 @@ function resetPassword(email) {
 
 // $.signedIn = function (){
   function signedIn(){
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().currentUser(function(user) {
     if (user) {
       console.log(user);
       return true;
