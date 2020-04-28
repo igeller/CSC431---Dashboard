@@ -8,36 +8,11 @@
     <link rel="stylesheet" type="text/css" href="css/index-custom.css">
 </head>
 
-
 <body id="app-top" style="box-sizing: border-box!important;">
-
+  <script src="/__/firebase/7.14.2/firebase-app.js"></script>
+  <script src="/__/firebase/7.14.2/firebase-auth.js"></script>
+  <script src="/__/firebase/7.14.2/firebase-database.js"></script>
+  <script src="/__/firebase/init.js"></script>
 </body>
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.13.2/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.13.2/firebase-analytics.js"></script>
-<script src="/__/firebase/7.13.2/firebase-auth.js"></script>
-<script src="/__/firebase/7.13.2/firebase-database.js"></script>
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
-
-<script type="text/javascript" src="js/auth.js"></script>
-<script type="text/javascript" src="js/taskManager.js"></script>
-<script type="text/javascript">
-  signUp("test2@gmail.com", "123456", () => {
-    console.log('login success');
-    now = new Date()
-    createTask("Art Assignment", now.toISOString(), "Landscape sketching assignment", () => {
-      getTasks((taskArray) => {
-        console.log(taskArray);
-      });
-    })
-  }, (error) => {
-    console.log(error);
-  })
-</script>
 
 </html>
