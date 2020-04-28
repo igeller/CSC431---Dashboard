@@ -1,5 +1,6 @@
-
-
+if(sessionStorage.getItem('userSignIn') === null){
+    sessionStorage.setItem('userSignIn', 'n');
+}
 $(document).ready(function(){
     function addTag(parentTag, tagName, attr, val){
         const parent = document.getElementsByTagName(parentTag);
@@ -52,7 +53,7 @@ $(document).ready(function(){
 
     //Navigation
     if(location.pathname.indexOf("login.html") == -1) {
-        addTag("head", "script", ["src"], ["/js/confirmLoggedIn.js"]);
+        if(sessionStorage.getItem("userSignIn") == 'y'){
 
         $("body").prepend(
             `
@@ -72,7 +73,7 @@ $(document).ready(function(){
                             <a id="1" class="nav-link py-0" href="index.html">Tasks</a>
                         </li>
                         <li class="nav-item">
-                            <a id="2" class="nav-link py-0" href="#">Calendar</a>
+                            <a id="2" class="nav-link py-0" href="calendar.html">Calendar</a>
                         </li>
                         <li id='settings' class="nav-item ml-auto">
                             <a  class="nav-link py-0" href="settings.html"> <i id="3" class="fas fa-cog "></i></a>
@@ -109,11 +110,18 @@ $(document).ready(function(){
         }
 
         function activeTab(active, inactive) {
-            console.log(inactive)
+            console.log(inactive);
             document.getElementById(active).classList.add("text-info");
             for (let inactiveKey in inactive) {
                 document.getElementById(inactive[inactiveKey]).classList.remove("text-info");
             }
         }
-    }
+    }else{
+            console.log("should redirect");
+        console.log(location.pathname.replace(location.pathname, "login.html"));
+        console.log(location);
+        console.log(location.pathname);
+        console.log(location.pathname.replace("login.html"));
+        location.replace("login.html");
+    }}
 });

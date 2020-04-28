@@ -1,4 +1,5 @@
 currentUid = null;
+var mystorage = sessionStorage;
 
 function getUidFromEmail(email) {
   return email.replace(/\@/g, "").replace(/\./g, "");
@@ -33,9 +34,12 @@ function signIn(email, password, onCompletion) {
   .then(() => {
     console.log("login success")
     var currentUid = getUidFromEmail(email);
+    sessionStorage.setItem("userSignIn", "y");
     onCompletion();
   })
   .catch(function(error) {
+    sessionStorage.setItem("userSignIn", "n");
+
     var errorCode = error.code;
     var errorMessage = error.message;
     if (errorCode === 'auth/wrong-password') {

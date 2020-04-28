@@ -8,8 +8,6 @@
       <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/mandatoryFileHeading.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/mandatoryFileHeading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/settings.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +47,7 @@
       <updated>1588018662642</updated>
       <workItem from="1588018669650" duration="10454000" />
       <workItem from="1588033817016" duration="5523000" />
-      <workItem from="1588041346160" duration="1090000" />
+      <workItem from="1588041346160" duration="3858000" />
     </task>
     <servers />
   </component>
@@ -81,5 +79,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="608" y="324" width="615" height="325" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588021653707" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588117575643">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588117575643" />
   </component>
 </project>
