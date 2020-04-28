@@ -84,3 +84,18 @@ function resetPassword(email) {
         }
       });
 }
+
+// $.signedIn = function (){
+  function signedIn(){
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log(user);
+      return true;
+    } else {
+      console.log("no user");
+      // location.replace('login.html');
+      return false;
+    }
+  });
+}
+

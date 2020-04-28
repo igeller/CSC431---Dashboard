@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
     function addTag(parentTag, tagName, attr, val){
         const parent = document.getElementsByTagName(parentTag);
@@ -22,6 +24,7 @@ $(document).ready(function(){
     document.title = "Dashboard";
 
     addTag("head", "meta",["name", "content"], ["viewport", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"])
+
 
     addTag("head", 'link', ["rel", "type", "href"], ["stylesheet", "text/css", "./css/mandatoryStylings.css"])
     addTag("head", 'link', ["rel", "type", "href"], ["stylesheet", "text/css", "./css/index-custom.css"])
@@ -51,8 +54,15 @@ $(document).ready(function(){
 
 
 
+
+
+
+
+
     //Navigation
     if(location.pathname.indexOf("login.html") == -1) {
+        addTag("head", "script", ["src"], ["/js/confirmLoggedIn.js"]);
+
         $("body").prepend(
             `<script src="mandatoryFileHeading.js"></script>
             <nav class="navbar navbar-expand-lg navbar-light bg-neutral-dark rounded p-3">
