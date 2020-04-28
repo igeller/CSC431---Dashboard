@@ -1,3 +1,6 @@
+import "firebase";
+require('firebase/auth');
+
 var user = firebase.auth().currentUser;
 
 if ( user) {

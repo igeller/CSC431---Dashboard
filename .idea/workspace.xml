@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d034e88-89b9-4463-bb93-deffb2649d22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/.firebase/hosting.cHVibGlj.cache" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/.firebase/hosting.cHVibGlj.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/calendar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/mandatoryFileHeading.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/mandatoryFileHeading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/settings.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1588018662642</updated>
       <workItem from="1588018669650" duration="10454000" />
-      <workItem from="1588033817016" duration="4632000" />
+      <workItem from="1588033817016" duration="5469000" />
     </task>
     <servers />
   </component>
