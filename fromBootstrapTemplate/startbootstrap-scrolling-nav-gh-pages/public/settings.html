@@ -20,18 +20,28 @@
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputCity">Name</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="inputEmail46">New Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail46">Confirm Email</label>
+                    <input type="email" class="form-control" id="inputEmail46" placeholder="Email">
+                </div>
+                <div class="form-group col-md-6">
+                    <button id="confirmEmail" class="btn btn-sm bg-neutral-primary" type="button">Confirm</button>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <div class="form-group col-md-5">
+                    <label for="inputPassword46">New Password</label>
+                    <input type="password" class="form-control" id="inputPassword6" placeholder="Password">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="inputPassword46">Password</label>
+                <div class="form-group col-md-5">
+                    <label for="inputPassword46">Confirm Password</label>
                     <input type="password" class="form-control" id="inputPassword46" placeholder="Password">
+                </div>
+                <div class="form-group col-md-5">
+                    <button id="confirmPassword" class="btn btn-sm bg-neutral-primary" type="button">Confirm</button>
                 </div>
             </div>
         </form>
@@ -41,7 +51,7 @@
     </li>
     <li class="list-group-item d-flex">
         <div class="btn-group btn-group-split mr-3">
-            <badge type="button" class="btn bg-neutral-danger btn-sm">Category</badge>
+            <badge type="button" class="btn bg-neutral-danger btn-sm">Assignment</badge>
             <badge type="button" class="btn bg-neutral-danger btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </badge>
@@ -51,7 +61,7 @@
             </div>
         </div>
         <div class="btn-group btn-group-split mr-3">
-            <badge type="button" class="btn bg-neutral-danger btn-sm">Category</badge>
+            <badge type="button" class="btn bg-neutral-danger btn-sm">Reminder</badge>
             <badge type="button" class="btn bg-neutral-danger btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </badge>
@@ -61,7 +71,7 @@
             </div>
         </div>
         <div class="btn-group btn-group-split mr-3">
-            <badge type="button" class="btn bg-neutral-danger btn-sm">Category</badge>
+            <badge type="button" class="btn bg-neutral-danger btn-sm">Exam</badge>
             <badge type="button" class="btn bg-neutral-danger btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </badge>
@@ -74,9 +84,70 @@
     <li class="list-group-item d-flex bg-neutral-first justify-content-between align-items-center">
         Other
     </li>
+    <li class="list-group-item d-flex">
+        <div class="form-group">
+            <button onclick="logout(); location.replace('login.html');" id="logoutButton" class="btn btn-sm bg-neutral-primary" type="button">Logout</button>
+        </div>
+    </li>
     </ul>
 </body>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- Update Email -->
+<script type="text/javascript">
+    document.getElementById("confirmEmail").onclick = function fun() {
+        var newEmail = getValue('inputEmail4');
+        var newEmail2 = getValue('inputEmail46');
+        if (newEmail != newEmail2) {
+                    $("#modal-b1").modal('toggle');
+               $('body').prepend(`<div class="alert d-flex align-items-center pl-2 align-content-center alert-danger alert-dismissible fade show" role="alert">
+    <span class="font-size-lg d-block d-40 mr-2 text-center">
+        <i class="far fa-life-ring"></i>
+    </span>
+    <span>
+        <strong class="d-block">The emails must match!</strong>
+    </span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>`)
+        } else {
+            updateUserEmail(newEmail, () => {
+                console.log('updated email successfully');
+            }, (error) => {
+                console.log(error);
+            })
+        }
+    }
+</script>
+    
+<!-- Update Password -->
+<script type="text/javascript">
+    document.getElementById("confirmPassword").onclick = function fun() {
+        var newPassword = getValue('inputPassword6');
+        var newPassword2 = getValue('inputPassword46');
+        if (newPassword != newPassword2) {
+                    $("#modal-b1").modal('toggle');
+               $('body').prepend(`<div class="alert d-flex align-items-center pl-2 align-content-center alert-danger alert-dismissible fade show" role="alert">
+    <span class="font-size-lg d-block d-40 mr-2 text-center">
+        <i class="far fa-life-ring"></i>
+    </span>
+    <span>
+        <strong class="d-block">The passwords must match!</strong>
+    </span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>`)
+        } else {
+            updateUserPassword(newPassword, () => {
+                console.log('updated password successfully');
+            }, (error) => {
+                console.log(error);
+            })
+        }
+    }
+</script>
 
 </html>
 

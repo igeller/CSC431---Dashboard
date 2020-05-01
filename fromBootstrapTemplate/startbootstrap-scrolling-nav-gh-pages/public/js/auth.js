@@ -89,6 +89,50 @@ function resetPassword(email) {
       });
 }
 
+function updateUserEmail(newEmail, onCompletion, onError) {
+    var user = firebase.auth().currentUser;
+    user.updateEmail(newEmail).then(function() {
+        //Email updated successfully
+        $("#modal-b1").modal('toggle');
+               $('body').prepend(`<div class="alert d-flex align-items-center pl-2 align-content-center alert-success alert-dismissible fade show" role="alert">
+    <span class="font-size-lg d-block d-40 mr-2 text-center">
+        <i class="far fa-life-ring"></i>
+    </span>
+    <span>
+        <strong class="d-block">Email changed successfully!</strong> This is a success alert—check it out!
+    </span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>`)
+    })
+    .catch(function(error) {
+        onError(error);
+    })
+}
+
+function updateUserPassword(newPassword, onCompletion, onError) {
+    var user = firebase.auth().currentUser;
+    user.updatePassword(newPassword).then(function() {
+        //Password updated successfully
+        $("#modal-b1").modal('toggle');
+               $('body').prepend(`<div class="alert d-flex align-items-center pl-2 align-content-center alert-success alert-dismissible fade show" role="alert">
+    <span class="font-size-lg d-block d-40 mr-2 text-center">
+        <i class="far fa-life-ring"></i>
+    </span>
+    <span>
+        <strong class="d-block">Password changed successfully!</strong> This is a success alert—check it out!
+    </span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>`)
+    })
+    .catch(function(error) {
+        onError(error);
+    })
+}
+
 // $.signedIn = function (){
   function signedIn(){
   firebase.auth().currentUser(function(user) {
@@ -103,3 +147,10 @@ function resetPassword(email) {
   });
 }
 
+function logout() {
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+    }).catch(function(error) {
+        // An error happened.
+    });
+}
