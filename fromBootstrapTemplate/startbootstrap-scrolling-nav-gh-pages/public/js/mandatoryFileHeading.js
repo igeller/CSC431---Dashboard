@@ -30,8 +30,6 @@ $(document).ready(function(){
     addTag("head", 'link', ["rel", "type", "href"], ["stylesheet", "text/css", "./css/mandatoryStylings.css"])
     addTag("head", 'link', ["rel", "type", "href"], ["stylesheet", "text/css", "./css/index-custom.css"])
 
-    //cookies
-    // addTag("head", "script", ["src"], "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js" )
 
     //bootstrap
     addTag("head", "script", ["src", "integrity", "crossorigin"], ["https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js", "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\n", "anonymous"]);
@@ -45,8 +43,12 @@ $(document).ready(function(){
 
 
 
-
-
+    // var loadSet = false;
+    // // console.log(document.getElementsByTagName("head")[0].children.namedItem("scriptsLoaded"));
+    // if(document.contains(document.getElementsByTagName("head")[0].children.namedItem("scriptsLoaded"))){
+    //     loadSet = true;
+    //     console.log(loadSet)
+    // }
 
 
 

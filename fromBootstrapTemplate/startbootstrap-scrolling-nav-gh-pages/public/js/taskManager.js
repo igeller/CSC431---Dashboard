@@ -1,8 +1,11 @@
-function createTask(title, due, description, onCompletion) {
+function createTask(title, due, category, priority, timer, description, onCompletion) {
   const tasksRef = firebase.database().ref("users/" + currentUid + "/tasks");
   tasksRef.push({
     title: title,
     due: due,
+    category: category,
+    priority: priority,
+    timer: timer,
     description: description
   }).then(() => {
     onCompletion();
