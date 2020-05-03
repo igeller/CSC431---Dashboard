@@ -41,7 +41,94 @@
 <!--    <script type="text/javascript" themeBootstrap="assets/js/demo/apexcharts/light-charts.min.js"></script>-->
 <!--    <script type="text/javascript" themeBootstrap="assets/js/demo/apexcharts/dark-charts.min.js"></script>-->
 
+	<script type="text/javascript">
+	
+	var minYear = 1900
+	var maxYear = 2200
+	
+		function dynamicDropdownYear() {
 
+		var items = '';
+		
+		for (year = minYear; year <= maxYear; year++) {
+			items += '<a class="dropdown-item" onclick="$(\'#dropdownMenuButton2\').html(\'' + year + '\');" href="#">' + year + '</a>\n';
+		}
+
+		return  '<div class="dropdown">\n' +
+				'<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
+				'Year\n' + 
+				'</button>\n' +
+				'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" style="max-height: 200px; overflow-y: scroll;">\n' + 
+				items +
+				'</div>\n' +
+				'</div>\n';
+		}
+		
+		function dynamicDropdownMonth() {
+
+		var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+		var items = '';
+		
+		for (index = 0; index < 12; index++) {
+			items += '<a class="dropdown-item" onclick="$(\'#dropdownMenuButton\').html(\'' + months[index] + '\');" href="#">' + months[index] + '</a>\n';
+		}
+
+		return  '<div class="dropdown">\n' +
+				'<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
+				'Month\n' + 
+				'</button>\n' +
+				'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="max-height: 200px; overflow-y: scroll;">\n' + 
+				items +
+				'</div>\n' +
+				'</div>\n';
+		}
+		
+		function changeMonthLess() {
+			
+			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+			var currentMonth = document.getElementById("dropdownMenuButton").textContent;
+			
+			index = months.indexOf(currentMonth)
+			
+			if (index <= 0){
+				index = 11
+				var currentYear = document.getElementById("dropdownMenuButton2").textContent;
+				if (currentYear <= minYear){
+					
+				} else {
+					$('#dropdownMenuButton2').html(--currentYear);
+				}
+			} else {
+				index--;
+			}
+			
+			$('#dropdownMenuButton').html(months[index])
+			return 
+		}
+		
+		function changeMonthMore() {
+			
+			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+			var currentMonth = document.getElementById("dropdownMenuButton").textContent;
+			
+			index = months.indexOf(currentMonth)
+			
+			if (index >= 11){
+				index = 0
+				var currentYear = document.getElementById("dropdownMenuButton2").textContent;
+				if (currentYear >= maxYear || currentYear == 0){
+					
+				} else {
+					$('#dropdownMenuButton2').html(++currentYear);
+				}
+			} else {
+				index++;
+			}
+			
+			$('#dropdownMenuButton').html(months[index])
+			return 
+		}
+	</script>
 
 </head>
 <body id="app-top" style="box-sizing: border-box!important;">
@@ -77,52 +164,20 @@
 <div class="container-fluid">
 	<div class="d-flex justify-content-center align-items-center">
 		<div class="pull-right">
-			<button type="button" class="btn btn-primary"><</button>
-		</div>
-				<div class="pull-center">
-			<div class="dropdown">
-			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Month
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="max-height: 200px; overflow-y: scroll;">
-				<a class="dropdown-item" href="#">January</a>
-				<a class="dropdown-item" href="#">February</a>
-				<a class="dropdown-item" href="#">March</a>
-				<a class="dropdown-item" href="#">April</a>
-				<a class="dropdown-item" href="#">May</a>
-				<a class="dropdown-item" href="#">June</a>
-				<a class="dropdown-item" href="#">July</a>
-				<a class="dropdown-item" href="#">August</a>
-				<a class="dropdown-item" href="#">September</a>
-				<a class="dropdown-item" href="#">October</a>
-				<a class="dropdown-item" href="#">November</a>
-				<a class="dropdown-item" href="#">December</a>
-			  </div>
-			</div>
+			<button type="button" class="btn btn-primary" onclick="changeMonthLess();"><</button>
 		</div>
 		<div class="pull-center">
-			<div class="dropdown">
-			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Year
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="max-height: 200px; overflow-y: scroll;">
-				<a class="dropdown-item" href="#">2021</a>
-				<a class="dropdown-item" href="#">2020</a>
-				<a class="dropdown-item" href="#">2019</a>
-				<a class="dropdown-item" href="#">2018</a>
-				<a class="dropdown-item" href="#">2017</a>
-				<a class="dropdown-item" href="#">2016</a>
-				<a class="dropdown-item" href="#">2015</a>
-				<a class="dropdown-item" href="#">2014</a>
-				<a class="dropdown-item" href="#">2013</a>
-				<a class="dropdown-item" href="#">2012</a>
-				<a class="dropdown-item" href="#">2011</a>
-				<a class="dropdown-item" href="#">2010</a>
-			  </div>
-			</div>
+			<script type="text/javascript">
+				document.write(dynamicDropdownMonth());
+			</script>
+		</div>
+		<div class="pull-center">
+			<script type="text/javascript">
+				document.write(dynamicDropdownYear());
+			</script>
 		</div>
 		<div class="pull-left">
-			<button type="button" class="btn btn-primary">></button>
+			<button type="button" class="btn btn-primary" onclick="changeMonthMore();">></button>
 		</div>
 	</div>
 </div>
