@@ -4,7 +4,8 @@
     "version": "4.2.1",
     "scripts": {
         "start": "node_modules/.bin/gulp watch",
-        "scss": "node-sass --watch scss -o css"
+        "scss": "node-sass --watch scss -o css",
+        "colorPick": "node_modules/@simonwep/pickr/scripts/build.js"
     },
     "description": "A smooth scrolling navigation HTML template built with Bootstrap",
     "keywords": [
@@ -31,6 +32,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.1.1",
+        "@simonwep/pickr": "^1.5.1",
         "bootstrap": "^4.4.1",
         "firebase": "^7.14.2",
         "jquery": "^3.4.1",
@@ -43,6 +45,7 @@
         "browser-sync": "2.26.7",
         "del": "^4.1.1",
         "gulp": "4.0.2",
-        "merge-stream": "2.0.0"
+        "merge-stream": "2.0.0",
+        "@simonwep/pickr": "^1.5.1"
     }
 }
