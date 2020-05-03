@@ -35,7 +35,6 @@ function getTasks(onCompletion) {
       taskData.uid = childSnap.key;
       taskArray.push(taskData);
     })
-    console.log(taskArray);
     onCompletion(taskArray);
   })
 }
