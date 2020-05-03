@@ -97,24 +97,26 @@ function generateMonth() {
     var dayCounter;
     var items = '';
 
-    if (month == 0){
-        prevMonthDays = daysInMonth[11];
-    } else if(month == 2){
-        if(isLeap){
-            prevMonthDays = daysInMonth[1] + 1;
-        } else {
-            prevMonthDays = daysInMonth[1];
-        }
-    } else if(month == 11){
-        prevMonthDays = daysInMonth[10];
-    } else {
-        prevMonthDays = daysInMonth[--month];
-    }
-
-    dayCounter = prevMonthDays;
-    for(i = 0; i < lastDay; i++){
-        dayCounter--;
-    }
+	if (month == 0){
+		prevMonthDays = daysInMonth[11];
+	} else if(month == 1){
+		if(isLeap){
+			currentMonthDays++;
+			prevMonthDays = daysInMonth[--month];
+		} else {
+			prevMonthDays = daysInMonth[--month];
+		}
+	} else if(month == 2){
+		if(isLeap){
+			prevMonthDays = daysInMonth[1] + 1;
+		} else {
+			prevMonthDays = daysInMonth[1];
+		}
+	} else if(month == 11){
+		prevMonthDays = daysInMonth[10];
+	} else {
+		prevMonthDays = daysInMonth[--month];
+	}
 
     var onPrevMonth = true;
     var onCurrentMonth = false;
