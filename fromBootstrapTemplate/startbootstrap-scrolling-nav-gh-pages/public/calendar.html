@@ -144,6 +144,13 @@
 			
 			if (month == 0){
 				prevMonthDays = daysInMonth[11];
+			} else if(month == 1){
+				if(isLeap){
+					currentMonthDays++;
+					prevMonthDays = daysInMonth[--month];
+				} else {
+					prevMonthDays = daysInMonth[--month];
+				}
 			} else if(month == 2){
 				if(isLeap){
 					prevMonthDays = daysInMonth[1] + 1;
