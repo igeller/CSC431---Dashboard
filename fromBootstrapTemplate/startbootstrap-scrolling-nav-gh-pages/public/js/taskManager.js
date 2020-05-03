@@ -1,4 +1,5 @@
 function createTask(title, due, description, onCompletion) {
+  currentUid = sessionStorage.getItem("currentUid");
   const tasksRef = firebase.database().ref("users/" + currentUid + "/tasks");
   tasksRef.push({
     title: title,
