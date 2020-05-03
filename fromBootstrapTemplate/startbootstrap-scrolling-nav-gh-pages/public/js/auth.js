@@ -34,6 +34,7 @@ function signIn(email, password, onCompletion) {
   .then(() => {
     console.log("login success")
     var currentUid = getUidFromEmail(email);
+    sessionStorage.setItem("currentUid",currentUid);
     sessionStorage.setItem("userSignIn", "y");
     onCompletion();
   })
