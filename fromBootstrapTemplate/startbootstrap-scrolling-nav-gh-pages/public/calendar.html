@@ -1,354 +1,89 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="/__/firebase/7.14.2/firebase-app.js"></script>
+	<script src="/__/firebase/7.14.2/firebase-auth.js"></script>
+	<script src="/__/firebase/7.14.2/firebase-database.js"></script>
+	<script src="/__/firebase/init.js"></script>
+	<script src="js/taskManager.js"></script>
 
-    <!--change to our icon-->
-    <!--    <link rel="shortcut icon" href="./favicon/favicon.ico">-->
-    <!--    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">-->
-    <!--    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">-->
-
-<!--      bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css ">
-<!--    scroll css-->
-    <link rel="stylesheet" type="text/css" href="css/scrolling-nav.css">
-<!--        new boot strap template-->
-    <link rel="stylesheet" type="text/css" href="themeBootstrap/assets/css/bamburgh.min.css">
-    <link rel="stylesheet" type="text/css" href="css/index-custom.css">
-
-    <!--    Custom CSS-->
-    <link rel="stylesheet" type="text/css"  href="css/index-custom.css">
-
-    <!-- Generic Bootstrap Core UI Kit Javascript Core -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <!--Perfect scrollbar-->
-    <script type="text/javascript" src="themeBootstrap/assets/vendor/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
-
-    <!--StickyKit-->
-    <script type="text/javascript" src="themeBootstrap/assets/vendor/stickykit/js/stickykit.min.js"></script>
-
-    <!--Apexcharts-->
-<!--    <script type="text/javascript" themeBootstrap="assets/vendor/apexcharts/js/apexcharts.min.js"></script>-->
-<!--    <script type="text/javascript" themeBootstrap="assets/js/demo/apexcharts/light-charts.min.js"></script>-->
-<!--    <script type="text/javascript" themeBootstrap="assets/js/demo/apexcharts/dark-charts.min.js"></script>-->
-
-	<script type="text/javascript">
-	
-	var currentDate = new Date();
-	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-	var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-	var minYear = 1900
-	var maxYear = 2200
-	
-		function dynamicDropdownYear() {
-
-		var items = '';
-		
-		for (year = minYear; year <= maxYear; year++) {
-			items += '<a class="dropdown-item" onclick="$(\'#dropdownMenuButton2\').html(\'' + year + '\'); updateMonth();" href="#">' + year + '</a>\n';
-		}
-
-		return  '<div class="dropdown">\n' +
-				'<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-				currentDate.getFullYear() + 
-				'</button>\n' +
-				'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" style="max-height: 200px; overflow-y: scroll;">\n' + 
-				items +
-				'</div>\n' +
-				'</div>\n';
-		}
-		
-		function dynamicDropdownMonth() {
-
-		var items = '';
-		
-		for (index = 0; index < 12; index++) {
-			items += '<a class="dropdown-item" id="dropdown-item" onclick="$(\'#dropdownMenuButton\').html(\'' + months[index] + '\'); updateMonth();" href="#">' + months[index] + '</a>\n'
-		}
-
-		return  '<div class="dropdown">\n' +
-				'<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-				months[currentDate.getMonth()] + 
-				'</button>\n' +
-				'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="max-height: 200px; overflow-y: scroll;">\n' + 
-				items +
-				'</div>\n' +
-				'</div>\n';
-		}
-		
-		function changeMonthLess() {
-			
-			var currentMonth = document.getElementById("dropdownMenuButton").textContent;
-			var index = months.indexOf(currentMonth);
-			
-			if (index <= 0){
-				index = 11
-				var currentYear = document.getElementById("dropdownMenuButton2").textContent;
-				if (currentYear <= minYear){
-					
-				} else {
-					$('#dropdownMenuButton2').html(--currentYear);
-				}
-			} else {
-				index--;
-			}
-			
-			$('#dropdownMenuButton').html(months[index]);
-			document.getElementById("calendar-layout").innerHTML=generateMonth();
-			return;
-		}
-		
-		function changeMonthMore() {
-			
-			var currentMonth = document.getElementById("dropdownMenuButton").textContent;
-			var index = months.indexOf(currentMonth);
-			
-			if (index >= 11){
-				index = 0
-				var currentYear = document.getElementById("dropdownMenuButton2").textContent;
-				if (currentYear >= maxYear || currentYear == 0){
-					
-				} else {
-					$('#dropdownMenuButton2').html(++currentYear);
-				}
-			} else {
-				index++;
-			}
-			
-			$('#dropdownMenuButton').html(months[index]);
-			document.getElementById("calendar-layout").innerHTML = generateMonth();
-			return ;
-		}
-		
-		function generateMonth() {
-			
-			var currentMonth = document.getElementById("dropdownMenuButton").textContent;
-			var month = months.indexOf(currentMonth);
-			var year = document.getElementById("dropdownMenuButton2").textContent;
-			var date = new Date(year, month, 0);
-			var isLeap = (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
-			var lastDay = date.getDay();
-			var currentMonthDays = daysInMonth[month];
-			var prevMonthDays;
-			var dayCounter;
-			var items = '';
-			
-			if (month == 0){
-				prevMonthDays = daysInMonth[11];
-			} else if(month == 2){
-				if(isLeap){
-					prevMonthDays = daysInMonth[1] + 1;
-				} else {
-					prevMonthDays = daysInMonth[1];
-				}
-			} else if(month == 11){
-				prevMonthDays = daysInMonth[10];
-			} else {
-				prevMonthDays = daysInMonth[--month];
-			}
-			
-			dayCounter = prevMonthDays;
-			for(i = 0; i < lastDay; i++){
-				dayCounter--;
-			}
-			
-			var onPrevMonth = true;
-			var onCurrentMonth = false;
-			var onPrevMonth2 = true;
-			var onCurrentMonth2 = false;
-			
-			for(x = 0; x < 12; x++){
-				if(x % 2 == 0){
-					items += '<div class="row">\n';
-					var rowStart = dayCounter;
-				} else {
-					items += '<div class="row" style="height: 5.7vw;">\n';
-				}
-				for(y = 0; y < 7; y++){
-					if(x % 2 == 0){
-						if(onPrevMonth || !onCurrentMonth){
-							items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-										 '<div class="bg-secondary" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-											 '<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
-										 '</div>\n' +
-									 '</div>\n';
-						} else {
-							items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-										 '<div class="bg-white" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-											 '<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
-										 '</div>\n' +
-									 '</div>\n';
-						}
-						dayCounter++;
-						if(dayCounter > prevMonthDays && onPrevMonth){
-							dayCounter = 1;
-							onPrevMonth = false;
-							onCurrentMonth = true;
-						}
-						if(dayCounter > currentMonthDays && onCurrentMonth){
-							dayCounter = 1;
-							onCurrentMonth = false;
-						}
-					} else {
-						if(onPrevMonth2 || !onCurrentMonth2){
-							items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-										 '<div class="bg-secondary" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-											 '<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
-												 'Task\n' +
-											 '</p>\n' +
-										 '</div>\n' +
-									 '</div>\n';
-					
-						} else {
-							items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-										 '<div class="bg-white" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-											 '<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
-												 'Task\n' +
-											 '</p>\n' +
-										 '</div>\n' +
-									 '</div>\n';
-						}
-						rowStart++;
-						if(rowStart > prevMonthDays && onPrevMonth2){
-							rowStart = 1;
-							onPrevMonth2 = false;
-							onCurrentMonth2 = true;
-						}
-						if(rowStart > currentMonthDays && onCurrentMonth2){
-							rowStart = 1;
-							onCurrentMonth2 = false;
-						}
-					}
-				}
-				items += '</div>\n';
-			}
-			
-			return items;
-		}
-		
-		function updateMonth() {
-			document.getElementById("calendar-layout").innerHTML = generateMonth();
-		}
-		
-	</script>
-
+	<script src="js/mandatoryFileHeading.js"></script>
+	<script src="js/calendarJS.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/index-custom.css">
 </head>
 
+
+
 <body id="app-top" style="box-sizing: border-box!important;">
-	<nav class="navbar navbar-expand-lg navbar-light bg-neutral-dark rounded p-3">
-		<div class="container">
-			<a class="navbar-brand align-middle text-center d-40 p-0" style="width: 88px!important;" href="#">
-				<img src="img/navBarLogo.png" class="h-100">
-			</a>
-			<button class="navbar-toggler is-active collapsed hamburger hamburger--elastic border-0" type="button"
-					data-toggle="collapse" data-target="#nav-primary" aria-controls="nav-primary"
-					aria-expanded="false" aria-label="Toggle navigation">
-							<span class="hamburger-box">
-								<span class="hamburger-inner"></span>
-							</span>
-			</button>
-			<div class="collapse navbar-collapse" id="nav-primary">
-				<ul class="navbar-nav w-100 mt-3">
-					<li class="nav-item">
-						<a class="nav-link py-0" href="#">Tasks</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link py-0" href="#">Calendar</a>
-					</li>
-					<li id='settings' class="nav-item ml-auto">
-						<a class="nav-link py-0" href="settings.html"> <i class="fas fa-cog"></i></a>
-					</li>
-				</ul>
+<div class="container-fluid">
+	<div class="d-flex justify-content-center align-items-center">
+		<div class="pull-right">
+			<button type="button" class="btn btn-primary" onclick="changeMonthLess();">&lt;</button>
+		</div>
+		<div class="pull-center">
+			<script type="text/javascript">
+				document.write(dynamicDropdownMonth());
+			</script>
+		</div>
+		<div class="pull-center">
+			<script type="text/javascript">
+				document.write(dynamicDropdownYear());
+			</script>
+		</div>
+		<div class="pull-left">
+			<button type="button" class="btn btn-primary" onclick="changeMonthMore();">&gt;</button>
+		</div>
+	</div>
+</div>
+
+<div class="border-top"></div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
+			<div class="bg-light">
+				<p style="text-align:center; margin-bottom: 0px">Sunday</p>
 			</div>
 		</div>
-	</nav>
-
-	<div class="container-fluid">
-		<div class="d-flex justify-content-center align-items-center">
-			<div class="pull-right">
-				<button type="button" class="btn btn-primary" onclick="changeMonthLess();">&lt;</button>
+		<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
+			<div class="bg-light">
+				<p style="text-align:center; margin-bottom: 0px">Monday</p>
 			</div>
-			<div class="pull-center">
-				<script type="text/javascript">
-					document.write(dynamicDropdownMonth());
-				</script>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
+			<div class="bg-light">
+				<p style="text-align:center; margin-bottom: 0px">Tuesday</p>
 			</div>
-			<div class="pull-center">
-				<script type="text/javascript">
-					document.write(dynamicDropdownYear());
-				</script>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
+			<div class="bg-light">
+				<p style="text-align:center; margin-bottom: 0px">Wednesday</p>
 			</div>
-			<div class="pull-left">
-				<button type="button" class="btn btn-primary" onclick="changeMonthMore();">&gt;</button>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
+			<div class="bg-light">
+				<p style="text-align:center; margin-bottom: 0px">Thursday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
+			<div class="bg-light">
+				<p style="text-align:center; margin-bottom: 0px">Friday</p>
+			</div>
+		</div>
+		<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
+			<div class="bg-light">
+				<p style="text-align:center; margin-bottom: 0px">Saturday</p>
 			</div>
 		</div>
 	</div>
-
-	<div class="border-top"></div>
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
-				<div class="bg-light">
-				<p style="text-align:center; margin-bottom: 0px">Sunday</p>
-				</div>
-			</div>
-			<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
-				<div class="bg-light">
-				<p style="text-align:center; margin-bottom: 0px">Monday</p>
-				</div>
-			</div>
-			<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
-				<div class="bg-light">
-				<p style="text-align:center; margin-bottom: 0px">Tuesday</p>
-				</div>
-			</div>
-			<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
-				<div class="bg-light">
-				<p style="text-align:center; margin-bottom: 0px">Wednesday</p>
-				</div>
-			</div>
-			<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
-				<div class="bg-light">
-				<p style="text-align:center; margin-bottom: 0px">Thursday</p>
-				</div>
-			</div>
-			<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
-				<div class="bg-light">
-				<p style="text-align:center; margin-bottom: 0px">Friday</p>
-				</div>
-			</div>
-			<div class="col" style="padding-left: 0px; padding-right: 0px; height: 100%;">
-				<div class="bg-light">
-				<p style="text-align:center; margin-bottom: 0px">Saturday</p>
-				</div>
-			</div>
-		</div>
-		<div id="calendar-layout" type="text/javascript">
-			<script type="text/javascript">
-				document.write(generateMonth());
-			</script>
-		</div>
-	</div>	
+	<div id="calendar-layout" type="text/javascript">
+		<script type="text/javascript">
+			document.write(generateMonth());
+		</script>
+	</div>
+</div>
 </body>
 
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="/__/firebase/7.13.2/firebase-app.js"></script>
-
-	<!-- TODO: Add SDKs for Firebase products that you want to use
-		 https://firebase.google.com/docs/web/setup#available-libraries -->
-	<script src="/__/firebase/7.13.2/firebase-analytics.js"></script>
-
-	<!-- Initialize Firebase -->
-	<script src="/__/firebase/init.js"></script>
 
 </html>
