@@ -7,67 +7,55 @@
     <script src="/__/firebase/7.14.2/firebase-auth.js"></script>
     <script src="/__/firebase/7.14.2/firebase-database.js"></script>
     <script src="/__/firebase/init.js"></script>
+    <script src="js/taskManager.js"></script>
 
     <script src="js/mandatoryFileHeading.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="css/index-custom.css">
-
-    <script>
-        function getActualDate() {
-            var d = new Date();
-            var day = d.getDate();
-            var month =(d.getMonth()+1);
-            var year =d.getFullYear();
-            if (month > 0 & month < 10) {
-                month = '0' + (d.getMonth()+1)
-            }
-            if (day > 0 & day < 10) {
-                month = '0' + getDate()
-            }
-            return month + "/" + day + "/" + year;
-        }
-
-        $(document).ready(function(){
-            $("#date").html(getActualDate());
-
-
-            var $newTask = $("#new-task");
-            var $incompletedTasks = $("#task-list");
-            var $addButton = $("#add-task");
-            // make a new list item
-            var makeNLI = function(taskToAdd) {
-                var $newListItem = $("<li></li>");
-                var $newLabel = $("<label></label>");
-
-                $newListItem.append($newLabel.html(taskToAdd));
-
-                return $newListItem;
-            }
-
-            $addButton.on( "click", function(){
-                var listItemToAdd = makeNLI($newTask.val());
-                $incompletedTasks.append(listItemToAdd);
-                $newTask.val("");
-            })
-        });
-
-
-
-    </script>
-
 </head>
-<body>
-<div id='task-container' align = 'center'>
-    <p>
-        <label for="new-task">Add Item</label><input id="new-task" type="text"><button id="add-task">Add</button>
-    </p>
+<body> 
+    <div id='task-container'>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-b1">+</button>
+        <div class="modal fade" id="modal-b1" tabindex="-1" role="dialog" aria-labelledby="modal-b1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card bg-secondary shadow-none border-0">
+                            <div class="card-header bg-white pb-5">
+                                <div class="card-body px-lg-5 text-left">
+                                    <form role="form">
+                                        <div class="form-group row">
+                                            <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
+                                            <div class="col-sm-12">
+                                                <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
+                                            </div>
+                                            <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
+                                            <div class="col-sm-12">
+                                                <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY" type="date" required>
+                                            </div>
+                                            <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
+                                            <div class="col-sm-12">
+                                                <input id="details" class="form-control" type="details">
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <span id='date'></span><br>
+        <ul id='task-list' style="list-style-type:none;">
 
-    <span id='date'></span><br>
-    <ul id='task-list' style="list-style-type:none;">
-
-    </ul>
-</div>
+        </ul>
+    </div>
 </body>
 
 
