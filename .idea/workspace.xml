@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d034e88-89b9-4463-bb93-deffb2649d22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/categoryModal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/calendarJS.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/taskLandingPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/calendar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
