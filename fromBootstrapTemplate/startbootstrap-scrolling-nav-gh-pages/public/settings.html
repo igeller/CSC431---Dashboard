@@ -50,7 +50,7 @@
     </li>
     <li class="list-group-item d-flex bg-neutral-first justify-content-between align-items-center">
         <p class="m-0 col-sm-auto">Categories</p>
-        <button class="col-sm-12 my-0 mr-5 pr-5 alert-link text-dark text-left" data-toggle="modal" data-target="#modal-add-cat">+</button>
+        <button class="my-0 mr-5 alert-link text-dark text-left" data-toggle="modal" data-target="#modal-add-cat">+</button>
         <div class="modal fade" id="modal-add-cat" tabindex="-1" role="dialog" aria-labelledby="modalb1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mx-auto col-lg-4" role="document">
                 <div class="modal-content">
@@ -77,7 +77,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="text-center">
                                         <button id="modClose" type="button" onclick="ADD FUNCTION ALESSIO!!" class="btn btn-info my-4">Create</button>
                                     </div>
@@ -88,10 +87,9 @@
                 </div>
             </div>
         </div>
-
     </li>
-    <li class="list-group-item d-flex">
-        <div id="category1" class="btn-group btn-group-split mr-3">
+    <li id="categories-list" class="list-group-item d-flex">
+        <!--<div id="category1" class="btn-group btn-group-split mr-3">
             <badge type="button" class="btn bg-neutral-danger btn-sm">Assignment</badge>
             <badge type="button" class="btn bg-neutral-danger btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
@@ -117,7 +115,7 @@
             <div class="dropdown-menu">
                 <a onclick="document.getElementById('category3').style.display = 'none'" class="dropdown-item" href="#">Delete</a>
             </div>
-        </div>
+        </div>-->
     </li>
     <li class="list-group-item d-flex bg-neutral-first justify-content-between align-items-center">
         Other
@@ -185,6 +183,45 @@
             })
         }
     }
+</script>
+    
+<!-- Pull categories -->
+<script src="js/taskManager.js"></script>
+<script src="js/auth.js"></script>
+<script type="text/javascript">
+    var taskArray = [];
+    var categories = [];
+    var seen = false;
+    html = '';
+    function pullCategories(taskArray) {
+        // Remove duplicate categories
+        for (i=0; i < taskArray.length; i++) {
+                for (j=0; j < categories.length; j++) {
+                    if (categoriestaskArray[i].category == categories[j]) {
+                        seen = true;
+                        break;
+                    }
+                }
+                if (seen == false) {
+                    categories.push(taskArray[i].category);
+                }
+        }
+        for (i=0; i < categories.length; i++) {
+            // Construct html to append
+            html += '<div id="category';
+            html += i;
+            html += '" class="btn-group btn-group-split mr-3"> <badge type="button" class="btn bg-neutral-danger btn-sm">';
+            html += categories[i];
+            html += '</badge><badge type="button" class="btn bg-neutral-danger btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+            html += '<span class="sr-only">Toggle Dropdown</span></badge><div class="dropdown-menu">';
+            html += '<a onclick="document.getElementById(';
+            html += "'category" + i;
+            html += "').style.display = 'none'";
+            html += '" class="dropdown-item" href="#">Delete</a></div></div>'
+            document.getElementById('categories-list').innerHTML += html;
+        }
+    }
+    getTasks(pullCategories);
 </script>
 
 </html>

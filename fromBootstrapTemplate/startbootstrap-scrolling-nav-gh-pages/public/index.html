@@ -10,49 +10,127 @@
     <script src="js/taskManager.js"></script>
 
     <script src="js/mandatoryFileHeading.js"></script>
+    <script src="js/auth.js"></script>
+
     <script>
-       
+       $(document).ready(function() {
+ 
+            $(":button").click(function(event){
+                if($(this).prop("id") == "low"){
+                    $("#aBtnGroup").val("Low");
+                } else if($(this).prop("id") == "medium") {
+                    $("#aBtnGroup").val("Medium");
+                } else if($(this).prop("id") == "high") {
+                    $("#aBtnGroup").val("High");
+                }
+            });
+ 
+        });
+            
     </script>
+
     <link rel="stylesheet" type="text/css" href="css/index-custom.css">
 </head>
 <body id="app-top" style="box-sizing: border-box!important;">
     <div id='task-container'>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-b1">+</button>
-        <div class="modal fade" id="modal-b1" tabindex="-1" role="dialog" aria-labelledby="modal-b1" aria-hidden="true">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-b5">Add Task</button>
+        <div class="modal fade" id="modal-b5" tabindex="-1" role="dialog" aria-labelledby="modal-b5" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-body p-0">
-                        <div class="card bg-secondary shadow-none border-0">
-                            <div class="card-header bg-white pb-5">
-                                <div class="card-body px-lg-5 text-left">
-                                    <form role="form">
-                                        <div class="form-group row">
-                                            <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
-                                            <div class="col-sm-12">
-                                                <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
-                                            </div>
-                                            <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
-                                            <div class="col-sm-12">
-                                                <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY HH:MM" type="datetime" required>
-                                            </div>
-                                            <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
-                                            <div class="col-sm-12">
-                                                <input id="details" class="form-control" type="details">
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
-                                        </div>
-                                    </form>
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary shadow-none border-0">
+                                    <div class="card-header bg-white pb-5">
+                                        <div class="card-body px-lg-5 text-left">
+                                            <form role="form">
+                                                <div class="form-group row">
+                                                    <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
+                                                    </div>
+                                                    <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY" type="date" required>
+                                                    </div>
+                                                    <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="details" class="form-control" type="details">
+                                                    </div>
+                                <label for="timer" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Timer</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="timer" class="form-control requiredField" placeholder="HH:MM" type="time" required>
+                                                    </div>
+                                <label for="priority" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Priority</label>
+                                <div id="aBtnGroup" class="btn-group">
+                                    <button type="button" value="Low" class="btn btn-default" id="low">Low</button>
+                                    <button type="button" value="Medium" class="btn btn-default" id="medium">Medium</button>
+                                    <button type="button" value="High" class="btn btn-default" id="high">High</button>
+                                  </div>
+                                
+
+
+                                                </div>
+                            <div class="btn-group">
+                                <select id="category">
+                                    <option value="1" selected="selected">Category 1</option>
+                                    <option value="2">Category 2</option>
+                                    <option value="3">Category 3</option>
+                                </select>
+                            </div>
+                            <nav aria-label="Priority Selection">
                                 </div>
+                                                </nav>
+                                                <div class="text-center">
+                                                    <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('category'), getValue('aBtnGroup'), getValue('timer'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-b6">Add Category</button>
+        <div class="modal fade" id="modal-b6" tabindex="-1" role="dialog" aria-labelledby="modal-b6" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary shadow-none border-0">
+                                    <div class="card-header bg-white pb-5">
+                                        <div class="card-body px-lg-5 text-left">
+                                            <form role="form">
+                                                <div class="form-group row">
+                                                    <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
+                                                    </div>
+                                                    <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Color</label>
+                            
+                                                    <div class="btn-group">
+                                                                <select id="dropdown-color">
+                                                                    <option value="Red" selected="selected">Red</option>
+                                                                    <option value="Blue">Blue</option>
+                                                                    <option value="Yellow">Yellow</option>
+                                                                    <option value="Green">Green</option>
+                                                                </select>
+                                                    </div>
+
+
+                                    </div>
+                                        </label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-primary">Add Category</button>
+
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <ul id='task-list' style="list-style-type:none;">
-                
-            </ul>
         </div>
     </div>
 </body>

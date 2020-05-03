@@ -1,4 +1,5 @@
 function createTask(title, due, category, priority, timer, description, onCompletion) {
+  currentUid = sessionStorage.getItem("currentUid");
   const tasksRef = firebase.database().ref("users/" + currentUid + "/tasks");
   tasksRef.push({
     title: title,
@@ -13,6 +14,7 @@ function createTask(title, due, category, priority, timer, description, onComple
 }
 
 function removeTask(taskId, onCompletion, onError) {
+  currentUid = sessionStorage.getItem("currentUid");
   firebase.database().ref("users/" + currentUid + "/tasks/" + taskId).remove()
   .then(() => {
     onCompletion();
@@ -23,6 +25,7 @@ function removeTask(taskId, onCompletion, onError) {
 }
 
 function getTasks(onCompletion) {
+  currentUid = sessionStorage.getItem("currentUid");
   firebase.database().ref("users/" + currentUid + "/tasks").once("value")
   .then((snap) => {
     taskArray = []
@@ -32,7 +35,6 @@ function getTasks(onCompletion) {
       taskData.uid = childSnap.key;
       taskArray.push(taskData);
     })
-
     onCompletion(taskArray);
   })
 }
