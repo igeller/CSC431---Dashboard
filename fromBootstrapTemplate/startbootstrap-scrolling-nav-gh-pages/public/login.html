@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <script src="/__/firebase/7.14.2/firebase-app.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-auth.js"></script>
+    <script src="/__/firebase/7.14.2/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
     <script src="js/mandatoryFileHeading.js"></script>
+
 </head>
 <body>
-
-</div>
-
 
 <div class="row h-100">
     <div class=" card col-lg-4 mx-auto my-auto">
@@ -15,25 +19,27 @@
         <div class="card-body pb-0">
             <h5 class="card-title">Login</h5>
             <p class="card-text">
-            <div class="form-group">
 
+            <form>
 
-                <div class="input-group input-group-lg input-group-seamless mb-4">
+                <!--login for existing user-->
+                <div class="input-group input-group-lg input-group-seamless mb-4 ">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <span class="input-group-text "><i class="fas fa-envelope"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="text">
-
+                    <input id="loginEmail" class="form-control requiredField" placeholder="Email" type="email" required>
                 </div>
                 <div class="input-group input-group-lg input-group-seamless mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user-lock"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input id="loginPassword" class="form-control requiredField" placeholder="Password" type="password" required>
                 </div>
 
+
                 <div class="text-center">
-                    <a class="d-block mt-3 mb-4 alert-link text-dark text-left" data-toggle="modal" data-target="#modal-b1">Forgot Password?</a>
+                    <!--Forgot Password-->
+                    <a onclick="document.getElementById('forgotPassword').value=getValue('loginEmail')" class="d-block mt-3 mb-4 alert-link text-dark text-left" data-toggle="modal" data-target="#modal-b1">Forgot Password?</a>
                     <div class="modal fade" id="modal-b1" tabindex="-1" role="dialog" aria-labelledby="modalb1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered mx-auto col-lg-4" role="document">
                             <div class="modal-content">
@@ -47,14 +53,14 @@
                                         <div class="card-body px-lg-5 text-left">
                                             <form role="form">
                                                 <div class="form-group row">
-                                                    <label for="customerEmailPW" class="col-sm-12 col-form-label"><i class="fas fa-user pr-2"></i>Name</label>
+                                                    <label for="forgotPassword" class="col-sm-12 col-form-label"><i class="fas fa-envelope pr-2"></i>Email</label>
                                                     <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="customerEmailPW" placeholder="Name">
+                                                        <input id="forgotPassword" class="form-control requiredField" placeholder="Email" type="email" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="text-center">
-                                                    <button type="button" class="btn btn-info my-4">Send reset link</button>
+                                                    <button id="modClose" type="button" onclick="resetPassword(getValue('forgotPassword'))" class="btn btn-info my-4">Send reset link</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -64,12 +70,10 @@
                         </div>
                     </div>
 
+                    <button type="button" onclick="signIn(getValue('loginEmail'), getValue('loginPassword'), () => {redirectPage('index.html')}, () => {errorAlert('loginError')})" class="btn btn-info mx-auto w-asuto">Login</button>
 
-
-
-                    <a href="#" class="btn btn-info mx-auto w-auto">Login</a>
-
-                    <a href="#" class="d-block mt-4 alert-link text-info" data-toggle="modal" data-target="#modal-b2">Need an account?</a>
+                    <!--Sign Up-->
+                    <a href="#" onclick="getValue('newUserEmail')" class="d-block mt-4 alert-link text-info" data-toggle="modal" data-target="#modal-b2">Need an account?</a>
                     <div class="modal fade" id="modal-b2" tabindex="-1" role="dialog" aria-labelledby="modal-b2" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered mx-auto col-lg-4" role="document">
                             <div class="modal-content">
@@ -82,28 +86,32 @@
                                         </div>
                                         <div class="card-body px-lg-5 text-left">
 
-                                            <form role="form">
+                                            <form>
+<!--                                                role="form needs-validation" novalidate-->
                                                 <div class="form-group row">
                                                     <label for="customerName" class="col-sm-12 col-form-label"><i class="fas fa-user pr-2"></i>Name</label>
                                                     <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="customerName" placeholder="Name">
+                                                        <input type="text" class="input-required form-control" id="customerName" placeholder="Name"  required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="customerEmail" class="col-sm-12 col-form-label"><i class="fas fa-envelope pr-2"></i>Email</label>
+                                                    <label for="newUserEmail" class="col-sm-12 col-form-label"><i class="fas fa-envelope pr-2"></i>Email</label>
                                                     <div class="col-sm-12">
-                                                        <input type="email" class="form-control" id="customerEmail" placeholder="Email">
+                                                        <input type="email" class="input-required form-control" id="newUserEmail" placeholder="Email" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="customerPassword" class="col-sm-12 col-form-label"><i class="fas fa-user-lock pr-2"></i>Password</label>
+                                                    <label for="newUserPassword" class="col-sm-12 col-form-label"><i class="fas fa-user-lock pr-2"></i>Password</label>
                                                     <div class="col-sm-12">
-                                                        <input type="password" class="form-control" id="customerPassword" placeholder="Password">
+                                                        <input type="password" class="form-control requiredfield" id="newUserPassword" placeholder="Password" required>
                                                     </div>
                                                 </div>
 
-                                                <div class="text-center">
-                                                    <button type="button" class="btn btn-info my-4">Create Account</button>
+                                                <div  class="text-center">
+                                                    <button type="button" onclick="signUp(getValue('newUserEmail'), getValue('newUserPassword'), () => {redirectPage('login.html')}, () => {errorAlert('registrationError')})" class="btn btn-info mx-auto w-asuto">Create Account</button>
+<!--                                                    <script>getValue("newUserEmail")</script>-->
+
+                                                    <!--                                                    <button id="createAccBtn" type="submit" class="btn btn-info my-4" onsubmit="signUp(getValue('customerName'), getValue('newUserEmail'), getValue('customerPassword'), redirectPage('login.html'), errorAlert('registrationError'))">Create Account</button>-->
                                                 </div>
                                             </form>
                                         </div>
@@ -114,7 +122,7 @@
                     </div>
 
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

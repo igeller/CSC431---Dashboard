@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d034e88-89b9-4463-bb93-deffb2649d22" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/confirmLoggedIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/taskLandingPage.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1b8fVHUPHYvEbgofMtGVr24W3Z3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d034e88-89b9-4463-bb93-deffb2649d22" name="Default Changelist" comment="" />
+      <created>1588018662642</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588018662642</updated>
+      <workItem from="1588018669650" duration="10454000" />
+      <workItem from="1588033817016" duration="5523000" />
+      <workItem from="1588041346160" duration="4152000" />
+      <workItem from="1588188904850" duration="1566000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1588033772433">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1588033772433" />
+    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1588033772432">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1588033772432" />
+    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1588033772432">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1588033772432" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1588033772433">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1588033772433" />
+    <state x="97" y="86" key="MergeDialog" timestamp="1588021653658">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="97" y="86" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588021653658" />
+    <state x="608" y="324" width="615" height="325" key="MultipleFileMergeDialog" timestamp="1588021653707">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="608" y="324" width="615" height="325" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588021653707" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1588117575643">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1588117575643" />
+  </component>
+</project>
