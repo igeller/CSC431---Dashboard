@@ -95,7 +95,10 @@
             });
 
             getTasks((taskArr)=>{
-
+                if(taskArr.length <= 0){
+                    console.log(taskArr.length)
+                    $("#no-tasks").prepend(`<h1 class='text-center'>No Tasks! Add Some</h1>`);
+                }
                 for(var i = 0; i < taskArr.length; i++){
                     console.log(taskArr[i]);
                     var taskList = "";
@@ -186,7 +189,6 @@
                                 </select>
                             </div>
                             <nav aria-label="Priority Selection">
-                                </div>
                                                 </nav>
                                                 <div class="text-center">
                                                     <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('category'), '', getValue('aBtnGroup'), getValue('timer'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
@@ -202,47 +204,12 @@
         </div>
 
       
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-b6">Add Category</button>
-        <div class="modal fade" id="modal-b6" tabindex="-1" role="dialog" aria-labelledby="modal-b6" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <div class="card bg-secondary shadow-none border-0">
-                                    <div class="card-header bg-white pb-5">
-                                        <div class="card-body px-lg-5 text-left">
-                                            <form role="form">
-                                                <div class="form-group row">
-                                                    <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
-                                                    <div class="col-sm-12">
-                                                        <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
-                                                    </div>
-                                                    <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Color</label>
-                            
-                                                    <div class="btn-group">
-                                                                <select id="dropdown-color">
-                                                                    <option value="Red" selected="selected">Red</option>
-                                                                    <option value="Blue">Blue</option>
-                                                                    <option value="Yellow">Yellow</option>
-                                                                    <option value="Green">Green</option>
-                                                                </select>
-                                                    </div>
 
-
-                                    </div>
-                                        </label>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="button" onclick="createTask('category_placeholder', '', getValue('title'), getValue('dropdown-color'), '', '', '', () => {redirectPage('index.html')})" class="btn btn-primary">Add Category</button>
-
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div>
+            <div id="no-tasks">
+            </div>
             <ul id="task-list">
 
             </ul>
