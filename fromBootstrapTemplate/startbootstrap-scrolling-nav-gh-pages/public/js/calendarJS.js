@@ -117,6 +117,11 @@ function generateMonth() {
 	} else {
 		prevMonthDays = daysInMonth[--month];
 	}
+	
+	dayCounter = prevMonthDays;
+	for(i = 0; i < lastDay; i++){
+		dayCounter--;
+	}
 
     var onPrevMonth = true;
     var onCurrentMonth = false;
