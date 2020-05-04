@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d034e88-89b9-4463-bb93-deffb2649d22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="8d034e88-89b9-4463-bb93-deffb2649d22" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +51,7 @@
       <workItem from="1588188904850" duration="1566000" />
       <workItem from="1588560014591" duration="316000" />
       <workItem from="1588607989400" duration="454000" />
-      <workItem from="1588608877226" duration="8631000" />
+      <workItem from="1588608877226" duration="8687000" />
     </task>
     <servers />
   </component>
