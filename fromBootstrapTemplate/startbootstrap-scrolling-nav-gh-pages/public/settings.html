@@ -229,9 +229,14 @@
 <script type="text/javascript">
     function deleteCategory(taskArray, categoryIndex) {
         // Remove category from taskArray
+        var tempTask;
         for (i=0; i < taskArray.length; i++) {
                 if (taskArray[i].category == categories[categoryIndex]) {
                     taskArray[i].category = "generic";
+                    tempTask = taskArray[i];
+                    removeTask(taskArray[i].uid, () => {
+                        createTask(tempTask.title, tempTask.due, tempTask.category, tempTask.color, tempTask.priority, tempTask.timer, tempTask.description, () => {console.log("updated task")});
+                    });
                 }
         }
         document.getElementById("category"+categoryIndex).style.display = 'none';
