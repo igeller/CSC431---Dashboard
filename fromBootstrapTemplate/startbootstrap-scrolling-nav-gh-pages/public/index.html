@@ -16,12 +16,12 @@
        $(document).ready(function() {
  
             $(":button").click(function(event){
-                if($(this).prop("id") == "low"){
-                    $("#aBtnGroup").val("Low");
+                if($(this).prop("id") == "high"){
+                    $("#aBtnGroup").val("High");
                 } else if($(this).prop("id") == "medium") {
                     $("#aBtnGroup").val("Medium");
-                } else if($(this).prop("id") == "high") {
-                    $("#aBtnGroup").val("High");
+                } else {
+                    $("#aBtnGroup").val("Low");
                 }
             });
  
