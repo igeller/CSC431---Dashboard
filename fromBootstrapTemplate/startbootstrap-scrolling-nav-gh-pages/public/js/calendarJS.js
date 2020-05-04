@@ -85,6 +85,7 @@ function changeMonthMore() {
 }	
 
 function generateMonth() {
+	
 	getTasks((tasks) => {
 		var currentMonth = document.getElementById("dropdownMenuButton").textContent;
 		var month = months.indexOf(currentMonth);
@@ -126,9 +127,10 @@ function generateMonth() {
 			dayCounter--;
 		}
 		
+		var orderedTasks = createArray();
 		var startDate = date;
 		startDate.setDate(startDate.getDate() - (prevMonthDays - dayCounter));
-		var orderedTasks = createArray();
+		var countDate2 = new Date(startDate);
 		var countDate = startDate;
 		var c = 0;
 		for(i = 0; i < tasks.length;){
@@ -161,7 +163,9 @@ function generateMonth() {
 		var onCurrentMonth2 = false;
 
 		var z = 0;
-		countDate = startDate;
+		var z2 = 0
+		countDate = new Date(countDate2);
+		
 		for(x = 0; x < 12; x++){
 			if(x % 2 == 0){
 				items += '<div class="row">\n';
@@ -173,13 +177,13 @@ function generateMonth() {
 				if(x % 2 == 0){
 					if(onPrevMonth || !onCurrentMonth){
 						items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-secondary" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-secondary" onclick="callModal(new Date('+ countDate2.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
 							'</div>\n' +
 							'</div>\n';
 					} else {
 						items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-white" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-white" onclick="callModal(new Date('+ countDate2.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
 							'</div>\n' +
 							'</div>\n';
@@ -194,6 +198,8 @@ function generateMonth() {
 						dayCounter = 1;
 						onCurrentMonth = false;
 					}
+					countDate2.setDate(countDate2.getDate() + 1);
+					z2++;
 				} else {
 					if(onPrevMonth2 || !onCurrentMonth2){
 						var taskString = '';
@@ -207,7 +213,7 @@ function generateMonth() {
 							}
 						}
 						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-secondary" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-secondary" onclick="callModal(new Date(' + countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
 							taskString + '\n' +
 							'</p>\n' +
@@ -226,7 +232,7 @@ function generateMonth() {
 							}
 						}
 						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-white" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-white" onclick="callModal(new Date(' + countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
 							taskString + '\n' +
 							'</p>\n' +
@@ -255,14 +261,17 @@ function generateMonth() {
 }
 
 function updateMonth() {
+	
     document.getElementById("calendar-layout").innerHTML = generateMonth();
 }
 
 function dateCompare(date1, date2){
-	return (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getYear() == date2.getYear());
+	
+	return (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear());
 }
 
 function createArray() {
+	
 	var arr = [];
 	for(i = 0; i < 42; i++){
 		arr.push(new Array());
@@ -271,7 +280,11 @@ function createArray() {
 }
 
 function callModal(date) {
-	//this is not ideal behavior <-- GOOD TO KNOW!    
+	
+	var day = date.getDate();
+	var month = date.getMonth() + 1;
+	var year = date.getFullYear();
+	
 	$('body').append(`
 <div class="modal fade" id="modal-b5" tabindex="-1" role="dialog" aria-labelledby="modal-b5" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -288,7 +301,7 @@ function callModal(date) {
                                                     </div>
                                                     <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
                                                     <div class="col-sm-12">
-                                                        <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY" type="date" required>
+                                                        <input id="due-date" class="form-control requiredField" placeholder="` + day + '/' + month + '/' + year + `" type="date" required>
                                                     </div>
                                                     <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
                                                     <div class="col-sm-12">
