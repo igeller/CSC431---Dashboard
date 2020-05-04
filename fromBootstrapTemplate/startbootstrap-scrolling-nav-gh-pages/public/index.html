@@ -13,16 +13,16 @@
     <script src="js/auth.js"></script>
     <style>
 
-        * {
+        #task-list {
             box-sizing: border-box;
         }
 
-        ul {
+        #task-list {
             margin: 0;
             padding: 0;
         }
 
-        ul li {
+            #task-list li {
             cursor: pointer;
             position: relative;
             padding: 12px 8px 12px 40px;
@@ -38,11 +38,11 @@
         }
 
         /* Set all odd list items to a different color (zebra-stripes) */
-        ul li:nth-child(odd) {
+        #task-list li:nth-child(odd) {
             background: #f9f9f9;
         }
 
-        ul li:hover {
+        #task-list li:hover {
             background: #ddd;
         }
 
@@ -86,7 +86,7 @@
             }
 
             $('#task-list').on("click", "li", function () {
-                $(this).children(".show-hide").show();
+                $(this).children(".show-hide").toggle();
             });
 
             $(document).on("click", "button.remove-task", function(){
@@ -127,7 +127,7 @@
                             + "<ul>"
                         + "</li>" + 
                         "<button class='remove-task' type='button'> Remove Task </button>" +
-                        "<input type='hidden' id='uid' value='" + taskUID + "'>";
+                        "<input type='hidden' id='uid' value='" + taskUID + "'>" ;
 
                     $("#task-list").append(taskList);
 
@@ -135,24 +135,7 @@
                 }
             });
 
-            var myNodelist = document.getElementsByTagName("LI");
-            var i;
-            for (i = 0; i < myNodelist.length; i++) {
-                var span = document.createElement("SPAN");
-                var txt = document.createTextNode("\u00D7");
-                span.className = "close";
-                span.appendChild(txt);
-                myNodelist[i].appendChild(span);
-            }
 
-            var list = document.querySelector('ul');
-            list.addEventListener('click', function(ev) {
-                if (ev.target.tagName === 'LI') {
-                    ev.target.classList.toggle('checked');
-                }
-            }, false);
-
- 
         }); 
     </script>
 
