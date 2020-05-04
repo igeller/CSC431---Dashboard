@@ -2,6 +2,10 @@
 
 
 ####Click for [Live Demo](https://bootstrap-firebase-b20fb.web.app/) 
+- userName: dashboardtestacc@gmail.com
+- password: dashTestAcc!
+
+*use this account to login to the demo as a sign in to see to see password reset capabilities.*
 
 <br>
 
