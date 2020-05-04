@@ -96,7 +96,6 @@
 
             getTasks((taskArr)=>{
                 var catSet = new Set();
-                print("working???"+ catSet);
                 if(taskArr.length <= 0){
                     catSet.add("No categories, add some");
                     $("#no-tasks").prepend(`<h1 class='text-center'>No Tasks! Add Some</h1>`);
@@ -112,7 +111,7 @@
                         var taskTime = taskArr[i].timer;
                         var taskDate = new Date(taskArr[i].due);
                         var dueDate = dateFormatting(taskDate);
-                        catSet.add(taskArr[i]);
+                        catSet.add(taskArr[i].category);
                         // console.log(catSet.entries());
                         taskList +=
                             "<li>" +
@@ -138,10 +137,11 @@
                     }
 
                 }
-                console.log(catSet.entries());
-                console.log(catSet);
-                for(var i = 0; i < catSet.entries().length; i++){
-                    $("#catSelector").append(`<option value='test'>test</option>`);//`<option value="${i+1}" selected="selected">${catSet.entries[i]}</option>`);
+
+                let vals = catSet.values();
+                for(var i = 0; i < catSet.size; i++){
+                    console.log(vals.next().value);
+                    $("#catSelector").append(`<option value='${vals.next().value}'>${vals.next().value}</option>`);//`<option value="${i+1}" selected="selected">${catSet.entries[i]}</option>`);
                 }
 
             });
@@ -191,10 +191,9 @@
 
                                                 </div>
                             <div class="btn-group">
-                                <select id="category">
-                                    <option value="1" selected="selected">Assignment</option>
-                                    <option value="2">Reminder</option>
-                                    <option value="3">Exam</option>
+                                <label>Category</label>
+                                <select id="catSelector">
+
                                 </select>
                             </div>
                             <nav aria-label="Priority Selection">

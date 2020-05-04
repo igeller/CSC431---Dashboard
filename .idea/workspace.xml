@@ -4,7 +4,6 @@
     <list default="true" id="8d034e88-89b9-4463-bb93-deffb2649d22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/taskManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/fromBootstrapTemplate/startbootstrap-scrolling-nav-gh-pages/public/js/taskManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +54,7 @@
       <workItem from="1588188904850" duration="1566000" />
       <workItem from="1588560014591" duration="316000" />
       <workItem from="1588607989400" duration="454000" />
-      <workItem from="1588608877226" duration="7937000" />
+      <workItem from="1588608877226" duration="8631000" />
     </task>
     <servers />
   </component>
@@ -88,14 +87,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1588033772433" />
-    <state x="97" y="86" key="MergeDialog" timestamp="1588612598827">
+    <state x="97" y="86" key="MergeDialog" timestamp="1588621010253">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="97" y="86" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588612598827" />
-    <state x="608" y="324" width="615" height="325" key="MultipleFileMergeDialog" timestamp="1588612598870">
+    <state x="97" y="86" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588621010253" />
+    <state x="608" y="324" width="615" height="325" key="MultipleFileMergeDialog" timestamp="1588621010298">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="608" y="324" width="615" height="325" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588612598870" />
+    <state x="608" y="324" width="615" height="325" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1588621010298" />
     <state x="508" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588533831521">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
