@@ -129,7 +129,7 @@ function generateMonth() {
 		var orderedTasks = createArray();
 		var startDate = date;
 		startDate.setDate(startDate.getDate() - (prevMonthDays - dayCounter));
-		var countDate2 = startDate;
+		var countDate2 = new Date(startDate);
 		var countDate = startDate;
 		var c = 0;
 		for(i = 0; i < tasks.length;){
@@ -163,7 +163,7 @@ function generateMonth() {
 
 		var z = 0;
 		var z2 = 0
-		countDate = countDate2;
+		countDate = new Date(countDate2);
 		
 		for(x = 0; x < 12; x++){
 			if(x % 2 == 0){
