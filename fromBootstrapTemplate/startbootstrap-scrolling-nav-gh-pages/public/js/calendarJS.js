@@ -85,6 +85,7 @@ function changeMonthMore() {
 }	
 
 function generateMonth() {
+	
 	getTasks((tasks) => {
 		var currentMonth = document.getElementById("dropdownMenuButton").textContent;
 		var month = months.indexOf(currentMonth);
@@ -260,14 +261,17 @@ function generateMonth() {
 }
 
 function updateMonth() {
+	
     document.getElementById("calendar-layout").innerHTML = generateMonth();
 }
 
 function dateCompare(date1, date2){
-	return (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getYear() == date2.getYear());
+	
+	return (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear());
 }
 
 function createArray() {
+	
 	var arr = [];
 	for(i = 0; i < 42; i++){
 		arr.push(new Array());
@@ -276,7 +280,11 @@ function createArray() {
 }
 
 function callModal(date) {
-	//this is not ideal behavior <-- GOOD TO KNOW!    
+	
+	var day = date.getDate();
+	var month = date.getMonth() + 1;
+	var year = date.getFullYear();
+	
 	$('body').append(`
 <div class="modal fade" id="modal-b5" tabindex="-1" role="dialog" aria-labelledby="modal-b5" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -293,7 +301,7 @@ function callModal(date) {
                                                     </div>
                                                     <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
                                                     <div class="col-sm-12">
-                                                        <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY" type="date" required>
+                                                        <input id="due-date" class="form-control requiredField" placeholder="` + day + '/' + month + '/' + year + `" type="date" required>
                                                     </div>
                                                     <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
                                                     <div class="col-sm-12">
