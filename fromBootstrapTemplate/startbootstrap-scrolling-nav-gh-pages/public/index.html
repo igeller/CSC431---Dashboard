@@ -11,22 +11,149 @@
 
     <script src="js/mandatoryFileHeading.js"></script>
     <script src="js/auth.js"></script>
+    <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        ul li:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        ul li:hover {
+            background: #ddd;
+        }
+
+        /* Style the close button */
+
+        .remove-task:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .show-hide {
+            display: none;
+        }
+    </style>
     <script>
        $(document).ready(function() {
  
             $(":button").click(function(event){
-                if($(this).prop("id") == "low"){
-                    $("#aBtnGroup").val("Low");
+                if($(this).prop("id") == "high"){
+                    $("#aBtnGroup").val("High");
                 } else if($(this).prop("id") == "medium") {
                     $("#aBtnGroup").val("Medium");
-                } else if($(this).prop("id") == "high") {
-                    $("#aBtnGroup").val("High");
+                } else {
+                    $("#aBtnGroup").val("Low");
+                }
+            
+            });
+
+            
+
+            //Date formatting function
+            function dateFormatting(p1) {
+                var month = p1.getMonth() + 1;
+                var day = p1.getDate();
+                var year = p1.getFullYear();
+                var d  = ((month < 10) ? "0" + month : month);
+                d += ((day < 10) ? "/0" : "/") + day;
+                d += "/" + year;
+                p1 = d;
+                return p1;
+            }
+
+            $('#task-list').on("click", "li", function () {
+                $(this).children(".show-hide").show();
+            });
+
+            $(document).on("click", "button.remove-task", function(){
+
+                removeTask(getValue("uid"), () => {redirectPage("index.html")});
+            });
+
+            getTasks((taskArr)=>{
+
+                for(var i = 0; i < taskArr.length; i++){
+                    console.log(taskArr[i]);
+                    var taskList = "";
+                    var taskUID = taskArr[i].uid;
+                    var taskTitle = taskArr[i].title;
+                    var taskDesc = taskArr[i].description;
+                    var taskCat = taskArr[i].category;
+                    var taskPrio = taskArr[i].priority;
+                    var taskTime = taskArr[i].timer;
+                    var taskDate = new Date(taskArr[i].due);
+                    var dueDate = dateFormatting(taskDate);
+
+                    taskList += 
+                        "<li>" +
+                            taskTitle
+                            + "<ul class='show-hide'>" +
+                                "<li>" +
+                                    "Due Date: " + dueDate + " " + taskTime
+                                + "</li>"
+                                + "<li>" +
+                                    "Description: " + taskDesc
+                                + "</li>"
+                                + "<li>" +
+                                    "Category: " + taskCat
+                                + "</li>"
+                                + "<li>" +
+                                    "Priority: " + taskPrio
+                                + "</li>" 
+                            + "<ul>"
+                        + "</li>" + 
+                        "<button class='remove-task' type='button'> Remove Task </button>" +
+                        "<input type='hidden' id='uid' value='" + taskUID + "'>";
+
+                    $("#task-list").append(taskList);
+
+                    
                 }
             });
+
+            var myNodelist = document.getElementsByTagName("LI");
+            var i;
+            for (i = 0; i < myNodelist.length; i++) {
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                myNodelist[i].appendChild(span);
+            }
+
+            var list = document.querySelector('ul');
+            list.addEventListener('click', function(ev) {
+                if (ev.target.tagName === 'LI') {
+                    ev.target.classList.toggle('checked');
+                }
+            }, false);
+
  
-        });
-            
+        }); 
     </script>
 
     <link rel="stylesheet" type="text/css" href="css/index-custom.css">
@@ -92,6 +219,7 @@
             </div>
         </div>
 
+      
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-b6">Add Category</button>
         <div class="modal fade" id="modal-b6" tabindex="-1" role="dialog" aria-labelledby="modal-b6" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -132,6 +260,13 @@
                 </div>
             </div>
         </div>
+        <div>
+            <ul id="task-list">
+
+            </ul>
+        </div>
+
+
     </div>
 </body>
 </html>
