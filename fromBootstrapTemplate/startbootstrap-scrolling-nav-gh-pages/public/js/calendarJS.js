@@ -3,6 +3,7 @@ var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 var minYear = 1970
 var maxYear = 2200
+var newID = 0;
 
 function dynamicDropdownYear() {
 
@@ -281,12 +282,13 @@ function createArray() {
 
 function callModal(date) {
 	
-	var day = date.getDate();
-	var month = date.getMonth() + 1;
+	var day = ("0" + date.getDate()).slice(-2);
+	var month = ("0" + (date.getMonth() + 1)).slice(-2);
 	var year = date.getFullYear();
+	newID++;
 	
 	$('body').append(`
-<div class="modal fade" id="modal-b5" tabindex="-1" role="dialog" aria-labelledby="modal-b5" aria-hidden="true">
+<div class="modal fade" id="modal-` + newID + `" tabindex="-1" role="dialog" aria-labelledby="modal-` + newID + `" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                             <div class="modal-body p-0">
@@ -301,7 +303,7 @@ function callModal(date) {
                                                     </div>
                                                     <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
                                                     <div class="col-sm-12">
-                                                        <input id="due-date" class="form-control requiredField" placeholder="` + day + '/' + month + '/' + year + `" type="date" required>
+                                                        <input id="due-date" class="form-control requiredField" type="date" value="` + year + '-' + month + '-' + day + `" required>
                                                     </div>
                                                     <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
                                                     <div class="col-sm-12">
@@ -343,6 +345,6 @@ function callModal(date) {
                 </div>
             </div>`
 );
-    $("#modal-b5").modal('toggle');
+    $("'#modal-" + newID + "'").modal('toggle');
 }
 
