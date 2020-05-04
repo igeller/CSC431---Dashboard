@@ -161,6 +161,7 @@ function generateMonth() {
 		var onCurrentMonth2 = false;
 
 		var z = 0;
+		countDate = startDate;
 		for(x = 0; x < 12; x++){
 			if(x % 2 == 0){
 				items += '<div class="row">\n';
@@ -206,7 +207,7 @@ function generateMonth() {
 							}
 						}
 						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-secondary" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-secondary" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
 							taskString + '\n' +
 							'</p>\n' +
@@ -225,7 +226,7 @@ function generateMonth() {
 							}
 						}
 						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-white" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-white" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
 							taskString + '\n' +
 							'</p>\n' +
@@ -242,6 +243,7 @@ function generateMonth() {
 						rowStart = 1;
 						onCurrentMonth2 = false;
 					}
+					countDate.setDate(countDate.getDate() + 1);
 					z++;
 				}
 			}
@@ -260,11 +262,80 @@ function dateCompare(date1, date2){
 	return (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getYear() == date2.getYear());
 }
 
-function createArray(){
+function createArray() {
 	var arr = [];
 	for(i = 0; i < 42; i++){
 		arr.push(new Array());
 	}
 	return arr;
+}
+
+function callModal(date) {
+	document.write(`
+<div data-toggle="modal" data-target="#modal-cal">
+<div class="modal fade" id="modal-cal" tabindex="-1" role="dialog" aria-labelledby="modal-cal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card bg-secondary shadow-none border-0">
+                            <div class="card-header bg-white pb-5">
+                                <div class="card-body px-lg-5 text-left">
+                                    <form role="form">
+                                        <div class="form-group row">
+                                            <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
+                                            <div class="col-sm-12">
+                                                <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
+                                            </div>
+                                            <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
+                                            <div class="col-sm-12">
+                                                <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY HH:MM" type="datetime" required>
+                                            </div>
+                                            <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
+                                            <div class="col-sm-12">
+                                                <input id="details" class="form-control" type="details">
+                                            </div>
+					    <label for="timer" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Timer</label>
+                                            <div class="col-sm-12">
+                                                <input id="timer" class="form-control requiredField" placeholder="HH:MM" type="time" required>
+                                            </div>
+					     <label for="priority" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Priority</label>
+
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Low</a></li>
+        <li class="page-item active"><a class="page-link" href="#">Medium</a></li>
+        <li class="page-item"><a class="page-link" href="#">High</a></li>
+    </ul>
+
+
+                                        </div>
+					<div class="btn-group">
+    <button type="button" class="btn btn-second btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Category
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Category 1</a>
+        <a class="dropdown-item" href="#">Category 2</a>
+        <a class="dropdown-item" href="#">Category 3</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">New Category</a>
+    </div>
+</div>
+					<nav aria-label="Priority Selection">
+						</div>
+                                           </nav>
+                                        <div class="text-center">
+                                            <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>`
+);
 }
 
