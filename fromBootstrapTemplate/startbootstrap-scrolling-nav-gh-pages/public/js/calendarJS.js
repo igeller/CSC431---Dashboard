@@ -271,72 +271,65 @@ function createArray() {
 }
 
 function callModal(date) {
-	//this is not ideal behavior
-	document.write(`
-<div data-toggle="modal" data-target="#modal-cal">
-<div class="modal fade" id="modal-cal" tabindex="-1" role="dialog" aria-labelledby="modal-cal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-                    <div class="modal-body p-0">
-                        <div class="card bg-secondary shadow-none border-0">
-                            <div class="card-header bg-white pb-5">
-                                <div class="card-body px-lg-5 text-left">
-                                    <form role="form">
-                                        <div class="form-group row">
-                                            <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
-                                            <div class="col-sm-12">
-                                                <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
-                                            </div>
-                                            <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
-                                            <div class="col-sm-12">
-                                                <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY HH:MM" type="datetime" required>
-                                            </div>
-                                            <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
-                                            <div class="col-sm-12">
-                                                <input id="details" class="form-control" type="details">
-                                            </div>
-					    <label for="timer" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Timer</label>
-                                            <div class="col-sm-12">
-                                                <input id="timer" class="form-control requiredField" placeholder="HH:MM" type="time" required>
-                                            </div>
-					     <label for="priority" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Priority</label>
+	//this is not ideal behavior <-- GOOD TO KNOW!    
+	$('body').append(`
+<div class="modal fade" id="modal-b5" tabindex="-1" role="dialog" aria-labelledby="modal-b5" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card bg-secondary shadow-none border-0">
+                                    <div class="card-header bg-white pb-5">
+                                        <div class="card-body px-lg-5 text-left">
+                                            <form role="form">
+                                                <div class="form-group row">
+                                                    <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
+                                                    </div>
+                                                    <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY" type="date" required>
+                                                    </div>
+                                                    <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="details" class="form-control" type="details">
+                                                    </div>
+                                <label for="timer" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Timer</label>
+                                                    <div class="col-sm-12">
+                                                        <input id="timer" class="form-control requiredField" placeholder="HH:MM" type="time" required>
+                                                    </div>
+                                <label for="priority" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Priority</label>
+                                <div id="aBtnGroup" class="btn-group">
+                                    <button type="button" value="Low" class="btn btn-default" id="low">Low</button>
+                                    <button type="button" value="Medium" class="btn btn-default" id="medium">Medium</button>
+                                    <button type="button" value="High" class="btn btn-default" id="high">High</button>
+                                  </div>
+                                
 
-    <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Low</a></li>
-        <li class="page-item active"><a class="page-link" href="#">Medium</a></li>
-        <li class="page-item"><a class="page-link" href="#">High</a></li>
-    </ul>
 
-
+                                                </div>
+                            <div class="btn-group">
+                                <select id="category">
+                                    <option value="1" selected="selected">Assignment</option>
+                                    <option value="2">Reminder</option>
+                                    <option value="3">Exam</option>
+                                </select>
+                            </div>
+                            <nav aria-label="Priority Selection">
+                                </div>
+                                                </nav>
+                                                <div class="text-center">
+                                                    <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('category'), '', 'Medium', getValue('timer'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
+                                                </div>
+                                            </form>
                                         </div>
-					<div class="btn-group">
-    <button type="button" class="btn btn-second btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Category
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Category 1</a>
-        <a class="dropdown-item" href="#">Category 2</a>
-        <a class="dropdown-item" href="#">Category 3</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">New Category</a>
-    </div>
-</div>
-					<nav aria-label="Priority Selection">
-						</div>
-                                           </nav>
-                                        <div class="text-center">
-                                            <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>`
+                </div>
+            </div>`
 );
+    $("#modal-b5").modal('toggle');
 }
 
