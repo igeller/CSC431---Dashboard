@@ -197,7 +197,7 @@
         // Remove duplicate categories
         for (i=0; i < taskArray.length; i++) {
                 for (j=0; j < categories.length; j++) {
-                    if (categoriestaskArray[i].category == categories[j]) {
+                    if (taskArray[i].category == categories[j]) {
                         seen = true;
                         break;
                     }
@@ -214,14 +214,27 @@
             html += categories[i];
             html += '</badge><badge type="button" class="btn bg-neutral-danger btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
             html += '<span class="sr-only">Toggle Dropdown</span></badge><div class="dropdown-menu">';
-            html += '<a onclick="document.getElementById(';
-            html += "'category" + i;
-            html += "').style.display = 'none'";
+            html += '<a onclick="deleteCategory(taskArray, ';
+            html += i;
+            html += ")";
             html += '" class="dropdown-item" href="#">Delete</a></div></div>'
             document.getElementById('categories-list').innerHTML += html;
         }
     }
     getTasks(pullCategories);
+</script>
+    
+<!-- Delete category -->
+<script type="text/javascript">
+    function deleteCategory(taskArray, categoryIndex) {
+        // Remove category from taskArray
+        for (i=0; i < taskArray.length; i++) {
+                if (taskArray[i].category == categories[categoryIndex]) {
+                    taskArray[i].category = "generic";
+                }
+        }
+        document.getElementById("category"+categoryIndex).style.display = 'none';
+    }
 </script>
 
 </html>
