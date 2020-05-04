@@ -126,9 +126,10 @@ function generateMonth() {
 			dayCounter--;
 		}
 		
+		var orderedTasks = createArray();
 		var startDate = date;
 		startDate.setDate(startDate.getDate() - (prevMonthDays - dayCounter));
-		var orderedTasks = createArray();
+		var countDate2 = startDate;
 		var countDate = startDate;
 		var c = 0;
 		for(i = 0; i < tasks.length;){
@@ -162,8 +163,7 @@ function generateMonth() {
 
 		var z = 0;
 		var z2 = 0
-		var countDate2 = startDate;
-		countDate = startDate;
+		countDate = countDate2;
 		
 		for(x = 0; x < 12; x++){
 			if(x % 2 == 0){
@@ -176,13 +176,13 @@ function generateMonth() {
 				if(x % 2 == 0){
 					if(onPrevMonth || !onCurrentMonth){
 						items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-secondary" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-secondary" onclick="callModal(new Date('+ countDate2.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
 							'</div>\n' +
 							'</div>\n';
 					} else {
 						items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-white" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-white" onclick="callModal(new Date('+ countDate2.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
 							'</div>\n' +
 							'</div>\n';
@@ -197,8 +197,8 @@ function generateMonth() {
 						dayCounter = 1;
 						onCurrentMonth = false;
 					}
-					countDate.setDate(countDate.getDate() + 1);
-					z++;
+					countDate2.setDate(countDate2.getDate() + 1);
+					z2++;
 				} else {
 					if(onPrevMonth2 || !onCurrentMonth2){
 						var taskString = '';
@@ -212,7 +212,7 @@ function generateMonth() {
 							}
 						}
 						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-secondary" onclick="callModal(new Date('+ countDate2.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-secondary" onclick="callModal(new Date(' + countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
 							taskString + '\n' +
 							'</p>\n' +
@@ -231,7 +231,7 @@ function generateMonth() {
 							}
 						}
 						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-							'<div class="bg-white" onclick="callModal(new Date('+ countDate2.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<div class="bg-white" onclick="callModal(new Date(' + countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
 							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
 							taskString + '\n' +
 							'</p>\n' +
@@ -248,8 +248,8 @@ function generateMonth() {
 						rowStart = 1;
 						onCurrentMonth2 = false;
 					}
-					countDate2.setDate(countDate2.getDate() + 1);
-					z2++;
+					countDate.setDate(countDate.getDate() + 1);
+					z++;
 				}
 			}
 			items += '</div>\n';
