@@ -111,25 +111,27 @@
                     var taskDate = new Date(taskArr[i].due);
                     var dueDate = dateFormatting(taskDate);
 
-                    taskList += 
-                        "<li>" +
-                            taskTitle
-                            + "<ul class='show-hide'>" +
-                                "<li>" +
-                                    "Due Date: " + dueDate + " " + taskTime
-                                + "</li>"
-                                + "<li>" +
-                                    "Description: " + taskDesc
-                                + "</li>"
-                                + "<li>" +
-                                    "Category: " + taskCat
-                                + "</li>"
-                                + "<li>" +
-                                    "Priority: " + taskPrio
-                                + "</li>" 
-                            + "<ul>"
-                        + "</li>" + 
-                        "<button class='remove-task' type='button' value="+ taskUID +"> Remove Task </button>";
+                    if (taskTitle != "category_placeholder") {
+                        taskList += 
+                            "<li>" +
+                                taskTitle
+                                + "<ul class='show-hide'>" +
+                                    "<li>" +
+                                        "Due Date: " + dueDate + " " + taskTime
+                                    + "</li>"
+                                    + "<li>" +
+                                        "Description: " + taskDesc
+                                    + "</li>"
+                                    + "<li>" +
+                                        "Category: " + taskCat
+                                    + "</li>"
+                                    + "<li>" +
+                                        "Priority: " + taskPrio
+                                    + "</li>" 
+                                + "<ul>"
+                            + "</li>" + 
+                            "<button class='remove-task' type='button' value="+ taskUID +"> Remove Task </button>";
+                    }
 
                     $("#task-list").append(taskList);
 
