@@ -78,7 +78,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button id="modClose" type="button" onclick="ADD FUNCTION ALESSIO!!" class="btn btn-info my-4">Create</button>
+                                        <button id="modClose" type="button" onclick="createTask('title', '', getValue('categoryName'), getValue('categoryColor'), '', '', '', () => {redirectPage('settings.html')})" class="btn btn-info my-4">Create</button>
                                     </div>
                                 </form>
                             </div>
@@ -236,6 +236,6 @@
         document.getElementById("category"+categoryIndex).style.display = 'none';
     }
 </script>
-
+    
 </html>
 
