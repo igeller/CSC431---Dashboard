@@ -39,3 +39,16 @@ function getTasks(onCompletion) {
     onCompletion(taskArray);
   })
 }
+
+//
+// function getCategory(onCompletion) {
+//   currentUid = sessionStorage.getItem("currentUid");
+//   firebase.database().ref("users/" + currentUid + "/tasks").once("value")
+//       .then((snap) => {
+//         taskArr = []
+//         snap.forEach((childSnap) => {
+//           taskData = childSnap.val();
+//         })
+//         onCompletion(catSet);
+//       })
+// }

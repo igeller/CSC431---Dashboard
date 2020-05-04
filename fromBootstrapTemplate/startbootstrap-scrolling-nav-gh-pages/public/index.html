@@ -95,50 +95,59 @@
             });
 
             getTasks((taskArr)=>{
+                var catSet = new Set();
+                print("working???"+ catSet);
                 if(taskArr.length <= 0){
-                    console.log(taskArr.length)
+                    catSet.add("No categories, add some");
                     $("#no-tasks").prepend(`<h1 class='text-center'>No Tasks! Add Some</h1>`);
-                }
-                for(var i = 0; i < taskArr.length; i++){
-                    console.log(taskArr[i]);
-                    var taskList = "";
-                    var taskUID = taskArr[i].uid;
-                    var taskTitle = taskArr[i].title;
-                    var taskDesc = taskArr[i].description;
-                    var taskCat = taskArr[i].category;
-                    var taskPrio = taskArr[i].priority;
-                    var taskTime = taskArr[i].timer;
-                    var taskDate = new Date(taskArr[i].due);
-                    var dueDate = dateFormatting(taskDate);
-
-                    taskList += 
-                        "<li>" +
+                }else{
+                    for(var i = 0; i < taskArr.length; i++){
+                        console.log(taskArr[i]);
+                        var taskList = "";
+                        var taskUID = taskArr[i].uid;
+                        var taskTitle = taskArr[i].title;
+                        var taskDesc = taskArr[i].description;
+                        var taskCat = taskArr[i].category;
+                        var taskPrio = taskArr[i].priority;
+                        var taskTime = taskArr[i].timer;
+                        var taskDate = new Date(taskArr[i].due);
+                        var dueDate = dateFormatting(taskDate);
+                        catSet.add(taskArr[i]);
+                        // console.log(catSet.entries());
+                        taskList +=
+                            "<li>" +
                             taskTitle
                             + "<ul class='show-hide'>" +
-                                "<li>" +
-                                    "Due Date: " + dueDate + " " + taskTime
-                                + "</li>"
-                                + "<li>" +
-                                    "Description: " + taskDesc
-                                + "</li>"
-                                + "<li>" +
-                                    "Category: " + taskCat
-                                + "</li>"
-                                + "<li>" +
-                                    "Priority: " + taskPrio
-                                + "</li>" 
+                            "<li>" +
+                            "Due Date: " + dueDate + " " + taskTime
+                            + "</li>"
+                            + "<li>" +
+                            "Description: " + taskDesc
+                            + "</li>"
+                            + "<li>" +
+                            "Category: " + taskCat
+                            + "</li>"
+                            + "<li>" +
+                            "Priority: " + taskPrio
+                            + "</li>"
                             + "<ul>"
-                        + "</li>" + 
-                        "<button class='remove-task' type='button' value="+ taskUID +"> Remove Task </button>";
+                            + "</li>" +
+                            "<button class='remove-task' type='button' value="+ taskUID +"> Remove Task </button>";
 
-                    $("#task-list").append(taskList);
+                        $("#task-list").append(taskList);
+                    }
 
-                    
                 }
+                console.log(catSet.entries());
+                console.log(catSet);
+                for(var i = 0; i < catSet.entries().length; i++){
+                    $("#catSelector").append(`<option value='test'>test</option>`);//`<option value="${i+1}" selected="selected">${catSet.entries[i]}</option>`);
+                }
+
             });
 
 
-        }); 
+        })
     </script>
 
     <link rel="stylesheet" type="text/css" href="css/index-custom.css">
@@ -182,11 +191,11 @@
 
                                                 </div>
                             <div class="btn-group">
-                                <select id="category">
-                                    <option value="1" selected="selected">Assignment</option>
-                                    <option value="2">Reminder</option>
-                                    <option value="3">Exam</option>
+                                <label for="catSelector">Category</label>
+                                <select id="catSelector" name="catSelector">
+
                                 </select>
+
                             </div>
                             <nav aria-label="Priority Selection">
                                                 </nav>
