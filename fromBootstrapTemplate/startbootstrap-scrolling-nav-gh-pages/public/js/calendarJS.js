@@ -1,7 +1,7 @@
 var currentDate = new Date();
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-var minYear = 1900
+var minYear = 1970
 var maxYear = 2200
 
 function dynamicDropdownYear() {
@@ -51,7 +51,7 @@ function changeMonthLess() {
         if (currentYear <= minYear){
 
         } else {
-            $('#dropdownMenuButton2').html(--currentYear);
+            $('#dropdownMenuButton2').html(currentYear - 1);
         }
     } else {
         index--;
@@ -73,7 +73,7 @@ function changeMonthMore() {
         if (currentYear >= maxYear || currentYear == 0){
 
         } else {
-            $('#dropdownMenuButton2').html(++currentYear);
+            $('#dropdownMenuButton2').html(currentYear + 1);
         }
     } else {
         index++;
@@ -82,122 +82,261 @@ function changeMonthMore() {
     $('#dropdownMenuButton').html(months[index]);
     document.getElementById("calendar-layout").innerHTML = generateMonth();
     return ;
-}
+}	
 
 function generateMonth() {
+	getTasks((tasks) => {
+		var currentMonth = document.getElementById("dropdownMenuButton").textContent;
+		var month = months.indexOf(currentMonth);
+		var year = document.getElementById("dropdownMenuButton2").textContent;
+		var date = new Date(year, month, 0);
+		var tasks = taskArray;
+		tasks = tasks.sort((a, b) => a.due.valueOf() - b.due.valueOf());
+		
+		var isLeap = (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
+		var lastDay = date.getDay();
+		var currentMonthDays = daysInMonth[month];
+		var prevMonthDays;
+		var dayCounter;
+		var items = '';
 
-    var currentMonth = document.getElementById("dropdownMenuButton").textContent;
-    var month = months.indexOf(currentMonth);
-    var year = document.getElementById("dropdownMenuButton2").textContent;
-    var date = new Date(year, month, 0);
-    var isLeap = (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
-    var lastDay = date.getDay();
-    var currentMonthDays = daysInMonth[month];
-    var prevMonthDays;
-    var dayCounter;
-    var items = '';
-
-	if (month == 0){
-		prevMonthDays = daysInMonth[11];
-	} else if(month == 1){
-		if(isLeap){
-			currentMonthDays++;
-			prevMonthDays = daysInMonth[--month];
+		if (month == 0){
+			prevMonthDays = daysInMonth[11];
+		} else if(month == 1){
+			if(isLeap){
+				currentMonthDays++;
+				prevMonthDays = daysInMonth[month - 1];
+			} else {
+				prevMonthDays = daysInMonth[month - 1];
+			}
+		} else if(month == 2){
+			if(isLeap){
+				prevMonthDays = daysInMonth[1] + 1;
+			} else {
+				prevMonthDays = daysInMonth[1];
+			}
+		} else if(month == 11){
+			prevMonthDays = daysInMonth[10];
 		} else {
-			prevMonthDays = daysInMonth[--month];
+			prevMonthDays = daysInMonth[month - 1];
 		}
-	} else if(month == 2){
-		if(isLeap){
-			prevMonthDays = daysInMonth[1] + 1;
-		} else {
-			prevMonthDays = daysInMonth[1];
+		
+		dayCounter = prevMonthDays;
+		for(i = 0; i < lastDay; i++){
+			dayCounter--;
 		}
-	} else if(month == 11){
-		prevMonthDays = daysInMonth[10];
-	} else {
-		prevMonthDays = daysInMonth[--month];
-	}
-	
-	dayCounter = prevMonthDays;
-	for(i = 0; i < lastDay; i++){
-		dayCounter--;
-	}
+		
+		var startDate = date;
+		startDate.setDate(startDate.getDate() - (prevMonthDays - dayCounter));
+		var orderedTasks = createArray();
+		var countDate = startDate;
+		var c = 0;
+		for(i = 0; i < tasks.length;){
+			var iDate = new Date(tasks[i].due)
+			if(!dateCompare(iDate,countDate)){
+				c++;
+				countDate.setDate(countDate.getDate() + 1);
+			} else {
+				if(i != 0 && dateCompare(iDate, new Date(tasks[i - 1].due))){
+					orderedTasks[c].push(tasks[i]);
+					i++;
+				} else if(i == 0){
+					orderedTasks[c].push(tasks[i]);
+					i++;
+				} else {
+					c++;
+					countDate.setDate(countDate.getDate() + 1);
+					orderedTasks[c].push(tasks[i]);
+					i++;
+				}
+			}
+			if(c > 41){
+				break;
+			}
+		}
 
-    var onPrevMonth = true;
-    var onCurrentMonth = false;
-    var onPrevMonth2 = true;
-    var onCurrentMonth2 = false;
+		var onPrevMonth = true;
+		var onCurrentMonth = false;
+		var onPrevMonth2 = true;
+		var onCurrentMonth2 = false;
 
-    for(x = 0; x < 12; x++){
-        if(x % 2 == 0){
-            items += '<div class="row">\n';
-            var rowStart = dayCounter;
-        } else {
-            items += '<div class="row" style="height: 5.7vw;">\n';
-        }
-        for(y = 0; y < 7; y++){
-            if(x % 2 == 0){
-                if(onPrevMonth || !onCurrentMonth){
-                    items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-                        '<div class="bg-secondary" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-                        '<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
-                        '</div>\n' +
-                        '</div>\n';
-                } else {
-                    items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-                        '<div class="bg-white" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-                        '<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
-                        '</div>\n' +
-                        '</div>\n';
-                }
-                dayCounter++;
-                if(dayCounter > prevMonthDays && onPrevMonth){
-                    dayCounter = 1;
-                    onPrevMonth = false;
-                    onCurrentMonth = true;
-                }
-                if(dayCounter > currentMonthDays && onCurrentMonth){
-                    dayCounter = 1;
-                    onCurrentMonth = false;
-                }
-            } else {
-                if(onPrevMonth2 || !onCurrentMonth2){
-                    items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-                        '<div class="bg-secondary" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-                        '<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
-                        'Task\n' +
-                        '</p>\n' +
-                        '</div>\n' +
-                        '</div>\n';
+		var z = 0;
+		countDate = startDate;
+		for(x = 0; x < 12; x++){
+			if(x % 2 == 0){
+				items += '<div class="row">\n';
+				var rowStart = dayCounter;
+			} else {
+				items += '<div class="row" style="height: 5.7vw;">\n';
+			}
+			for(y = 0; y < 7; y++){
+				if(x % 2 == 0){
+					if(onPrevMonth || !onCurrentMonth){
+						items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
+							'<div class="bg-secondary" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
+							'<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
+							'</div>\n' +
+							'</div>\n';
+					} else {
+						items += '<div class="border-bottom-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
+							'<div class="bg-white" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
+							'<p style="margin-bottom: 0px">' + dayCounter + '</p>\n' +
+							'</div>\n' +
+							'</div>\n';
+					}
+					dayCounter++;
+					if(dayCounter > prevMonthDays && onPrevMonth){
+						dayCounter = 1;
+						onPrevMonth = false;
+						onCurrentMonth = true;
+					}
+					if(dayCounter > currentMonthDays && onCurrentMonth){
+						dayCounter = 1;
+						onCurrentMonth = false;
+					}
+				} else {
+					if(onPrevMonth2 || !onCurrentMonth2){
+						var taskString = '';
+						if(typeof orderedTasks[z] !== 'undefined'){
+							for(i = 0; i < orderedTasks[z].length; i++){
+								if(i != orderedTasks[z].length - 1){
+									taskString += orderedTasks[z][i].title + '<br>'
+								} else {
+									taskString += orderedTasks[z][i].title
+								}
+							}
+						}
+						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
+							'<div class="bg-secondary" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
+							taskString + '\n' +
+							'</p>\n' +
+							'</div>\n' +
+							'</div>\n';
 
-                } else {
-                    items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
-                        '<div class="bg-white" onclick="location.href=\'#\';" style="cursor: pointer; height: 100%;">\n' +
-                        '<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
-                        'Task\n' +
-                        '</p>\n' +
-                        '</div>\n' +
-                        '</div>\n';
-                }
-                rowStart++;
-                if(rowStart > prevMonthDays && onPrevMonth2){
-                    rowStart = 1;
-                    onPrevMonth2 = false;
-                    onCurrentMonth2 = true;
-                }
-                if(rowStart > currentMonthDays && onCurrentMonth2){
-                    rowStart = 1;
-                    onCurrentMonth2 = false;
-                }
-            }
-        }
-        items += '</div>\n';
-    }
+					} else {
+						var taskString = '';
+						if(typeof orderedTasks[z] !== 'undefined'){
+							for(i = 0; i < orderedTasks[z].length; i++){
+								if(i != orderedTasks[z].length - 1){
+									taskString += orderedTasks[z][i].title + '<br>'
+								} else {
+									taskString += orderedTasks[z][i].title
+								}
+							}
+						}
+						items += '<div class="border-top-0 border primary col" style="padding-left: 0px; padding-right: 0px;">\n' +
+							'<div class="bg-white" onclick="callModal(new Date('+ countDate.valueOf() + '));" style="cursor: pointer; height: 100%;">\n' +
+							'<p style=" height: 100%; display: flex; justify-content: center; align-items: center; padding-bottom: 10%; margin-bottom: 0px">\n' +
+							taskString + '\n' +
+							'</p>\n' +
+							'</div>\n' +
+							'</div>\n';
+					}
+					rowStart++;
+					if(rowStart > prevMonthDays && onPrevMonth2){
+						rowStart = 1;
+						onPrevMonth2 = false;
+						onCurrentMonth2 = true;
+					}
+					if(rowStart > currentMonthDays && onCurrentMonth2){
+						rowStart = 1;
+						onCurrentMonth2 = false;
+					}
+					countDate.setDate(countDate.getDate() + 1);
+					z++;
+				}
+			}
+			items += '</div>\n';
+		}
 
-    return items;
+		document.getElementById("calendar-layout").innerHTML = items;
+	});
 }
 
 function updateMonth() {
     document.getElementById("calendar-layout").innerHTML = generateMonth();
+}
+
+function dateCompare(date1, date2){
+	return (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getYear() == date2.getYear());
+}
+
+function createArray() {
+	var arr = [];
+	for(i = 0; i < 42; i++){
+		arr.push(new Array());
+	}
+	return arr;
+}
+
+function callModal(date) {
+	//this is not ideal behavior
+	document.write(`
+<div data-toggle="modal" data-target="#modal-cal">
+<div class="modal fade" id="modal-cal" tabindex="-1" role="dialog" aria-labelledby="modal-cal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card bg-secondary shadow-none border-0">
+                            <div class="card-header bg-white pb-5">
+                                <div class="card-body px-lg-5 text-left">
+                                    <form role="form">
+                                        <div class="form-group row">
+                                            <label for="title" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Title</label>
+                                            <div class="col-sm-12">
+                                                <input id="title" class="form-control requiredField" placeholder="Insert title here" type="title" required>
+                                            </div>
+                                            <label for="due-date" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Due Date</label>
+                                            <div class="col-sm-12">
+                                                <input id="due-date" class="form-control requiredField" placeholder="DD/MM/YYYY HH:MM" type="datetime" required>
+                                            </div>
+                                            <label for="details" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Details</label>
+                                            <div class="col-sm-12">
+                                                <input id="details" class="form-control" type="details">
+                                            </div>
+					    <label for="timer" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Timer</label>
+                                            <div class="col-sm-12">
+                                                <input id="timer" class="form-control requiredField" placeholder="HH:MM" type="time" required>
+                                            </div>
+					     <label for="priority" class="col-sm-12 col-form-label"><i class="fas pr-2"></i>Priority</label>
+
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Low</a></li>
+        <li class="page-item active"><a class="page-link" href="#">Medium</a></li>
+        <li class="page-item"><a class="page-link" href="#">High</a></li>
+    </ul>
+
+
+                                        </div>
+					<div class="btn-group">
+    <button type="button" class="btn btn-second btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Category
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Category 1</a>
+        <a class="dropdown-item" href="#">Category 2</a>
+        <a class="dropdown-item" href="#">Category 3</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">New Category</a>
+    </div>
+</div>
+					<nav aria-label="Priority Selection">
+						</div>
+                                           </nav>
+                                        <div class="text-center">
+                                            <button id="modClose" type="button" onclick="createTask(getValue('title'), getValue('due-date'), getValue('details'),() => {redirectPage('index.html')})" class="btn btn-info my-4">Create Task</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>`
+);
 }
 
