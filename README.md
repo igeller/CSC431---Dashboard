@@ -1,7 +1,7 @@
 # CSC431: Dashboard
 
 
-####Click for [Live Demo](https://bootstrap-firebase-b20fb.web.app/) 
+#### Click for [Live Demo](https://bootstrap-firebase-b20fb.web.app/) 
 - userName: dashboardtestacc@gmail.com
 - password: dashTestAcc!
 
@@ -14,7 +14,7 @@
 
 <br>
 
-####Documents: 
+#### Documents: 
 - [SRS Doc](/documents/SRS_Dashboard.docx)
 - [SAS Doc](/documents/SAS.docx)
 - [Project Proposal](documents/ProjectProposal.docx)
@@ -22,7 +22,7 @@
 
 <br>
 
-Project Planning:
+#### Project Planning:
 - [Trello](https://trello.com/b/pXek9fvq)
 
 <br>
