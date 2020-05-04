@@ -90,8 +90,8 @@
             });
 
             $(document).on("click", "button.remove-task", function(){
-
-                removeTask(getValue("uid"), () => {redirectPage("index.html")});
+                var uid = $(this).attr("value");
+                removeTask(uid, () => {redirectPage("index.html")});
             });
 
             getTasks((taskArr)=>{
@@ -126,8 +126,7 @@
                                 + "</li>" 
                             + "<ul>"
                         + "</li>" + 
-                        "<button class='remove-task' type='button'> Remove Task </button>" +
-                        "<input type='hidden' id='uid' value='" + taskUID + "'>" ;
+                        "<button class='remove-task' type='button' value="+ taskUID +"> Remove Task </button>";
 
                     $("#task-list").append(taskList);
 
