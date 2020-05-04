@@ -271,6 +271,7 @@ function createArray() {
 }
 
 function callModal(date) {
+	//this is not ideal behavior
 	document.write(`
 <div data-toggle="modal" data-target="#modal-cal">
 <div class="modal fade" id="modal-cal" tabindex="-1" role="dialog" aria-labelledby="modal-cal" aria-hidden="true">
